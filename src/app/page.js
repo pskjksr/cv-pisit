@@ -109,28 +109,27 @@ export default function Home() {
           🎓 Education
         </h2>
 
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 mt-10">
-          {/* School Card */}
-          <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-            <div className="text-8xl mb-4">🏫</div>
-            <h3 className="text-xl font-semibold mb-1">
-              Phayaophitthayakhom School
-            </h3>
-            <p className="text-blue-400 font-medium mb-1">Science & Math</p>
-            <p className="text-sm text-gray-300">2020 - 2023</p>
-          </div>
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-2 mt-10">
+  {/* School Card */}
+  <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+    <div className="text-8xl mb-4">🏫</div>
+    <h3 className="text-xl font-semibold mb-1">
+      Phayaophitthayakhom School
+    </h3>
+    <p className="text-blue-400 font-medium mb-1">Science & Math</p>
+    <p className="text-sm text-gray-300">2020 - 2023</p>
+  </div>
 
-          {/* University Card */}
-          <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-            <div className="text-8xl mb-4">🎓</div>
-            <h3 className="text-xl font-semibold mb-1">University of Phayao</h3>
-            <p className="text-blue-400 font-medium mb-1">
-              Software Engineering
-            </p>
-            <p className="text-sm">GPA: 3.03</p>
-            <p className="text-sm text-gray-300">2023 - Now</p>
-          </div>
-        </div>
+  {/* University Card */}
+  <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+    <div className="text-8xl mb-4">🎓</div>
+    <h3 className="text-xl font-semibold mb-1">University of Phayao</h3>
+    <p className="text-blue-400 font-medium mb-1">Software Engineering</p>
+    <p className="text-sm">GPA: 3.03</p>
+    <p className="text-sm text-gray-300">2023 - Now</p>
+  </div>
+</div>
+
       </section>
 
       {/* Footer */}
