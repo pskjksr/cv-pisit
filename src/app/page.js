@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-yellow-300 text-black px-6 py-10 flex flex-col items-center">
       <nav className="w-full flex justify-between items-center">
-        <h1 className="text-xl font-bold">WORAPON<span className="text-white">K</span></h1>
+        <h1 className="text-xl font-bold">PISIT KHUNCHOMKLAOSIRI<span className="text-white">K</span></h1>
         <div className="hidden md:flex gap-6 text-sm"><a href="#">About</a><a href="#">Skills</a><a href="#">Projects</a></div>
         <a href="#" className="bg-black text-white px-4 py-2 rounded text-sm">Contact me</a>
       </nav>
