@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { FaGithub, FaFacebook } from "react-icons/fa";
@@ -26,10 +26,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-fade-in-up">
-          Hello, I'm <span className="text-blue-400">Pisit</span>
+          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
-          I’m a passionate Software Engineering student who crafts clean,
+          I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
         <a
@@ -81,13 +81,13 @@ export default function Home() {
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
-            I'm <strong className="text-blue-700">Pisit Khunchomklaosiri</strong>, a
+            I&apos;m{" "}
+            <strong className="text-blue-700">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
             seeking internship opportunities in{" "}
             <strong>Front-End Development</strong>,{" "}
-            <strong>UX/UI Design</strong>, or{" "}
-            <strong>Business Analysis</strong> between{" "}
-            <strong>Nov 2025 - Mar 2026</strong>.
+            <strong>UX/UI Design</strong>, or <strong>Business Analysis</strong>{" "}
+            between <strong>Nov 2025 - Mar 2026</strong>.
           </p>
           <a
             href="/Resume.pdf"
@@ -95,7 +95,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition"
           >
-            📄  Resume
+            📄 Resume
           </a>
         </div>
       </section>
@@ -136,8 +136,15 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative bg-blue-950 text-gray-400 py-10 text-center text-sm mt-20">
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-          <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-10">
-            <path d="M0,40 C150,80 350,0 500,40 L500,00 L0,0 Z" className="fill-blue-900" />
+          <svg
+            viewBox="0 0 500 80"
+            preserveAspectRatio="none"
+            className="w-full h-10"
+          >
+            <path
+              d="M0,40 C150,80 350,0 500,40 L500,00 L0,0 Z"
+              className="fill-blue-900"
+            />
           </svg>
         </div>
       </footer>
