@@ -6,7 +6,7 @@ import { SiGmail } from "react-icons/si";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth">
+    <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
       <nav className="w-full fixed top-0 z-50 bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
@@ -64,9 +64,10 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12"
+        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up delay-300"
       >
-        <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-400 shadow-xl hover:scale-105 transition duration-300">
+        {/* รูปโปรไฟล์ */}
+        <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-400 shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
           <Image
             src="/Photo.jpg"
             alt="Pisit portrait"
@@ -76,18 +77,20 @@ export default function Home() {
           />
         </div>
 
-        <div className="max-w-xl text-center md:text-left animate-fade-in-up">
-          <h2 className="text-4xl font-bold mb-4 border-b-4 border-blue-500 inline-block pb-1">
+        {/* กล่องข้อมูล about me พร้อมเอฟเฟกต์เมื่อ hover */}
+        <div className="bg-[#0e0c24] border border-blue-400 p-8 rounded-2xl shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 ease-in-out max-w-xl text-white text-center md:text-left">
+          <h2 className="text-3xl font-bold mb-4 border-b-2 border-blue-500 inline-block pb-1">
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
             I&apos;m{" "}
-            <strong className="text-blue-700">Pisit Khunchomklaosiri</strong>, a
+            <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
             seeking internship opportunities in{" "}
-            <strong>Front-End Development</strong>,{" "}
-            <strong>UX/UI Design</strong>, or <strong>Business Analysis</strong>{" "}
-            between <strong>Nov 2025 - Mar 2026</strong>.
+            <strong className="text-blue-400">Front-End Development</strong>,{" "}
+            <strong className="text-blue-400">UX/UI Design</strong>, or{" "}
+            <strong className="text-blue-400">Business Analysis</strong> between{" "}
+            <strong className="text-blue-400">Nov 2025 - Mar 2026</strong>.
           </p>
           <a
             href="/Resume .pdf"
@@ -109,27 +112,68 @@ export default function Home() {
           🎓 Education
         </h2>
 
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-2 mt-10">
-  {/* School Card */}
-  <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-    <div className="text-8xl mb-4">🏫</div>
-    <h3 className="text-xl font-semibold mb-1">
-      Phayaophitthayakhom School
-    </h3>
-    <p className="text-blue-400 font-medium mb-1">Science & Math</p>
-    <p className="text-sm text-gray-300">2020 - 2023</p>
-  </div>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-stretch gap-10 px-4">
+          {/* School Card */}
+          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl w-full max-w-sm shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+            <div className="text-7xl mb-4">🏫</div>
+            <h3 className="text-xl font-semibold mb-1">
+              Phayaophitthayakhom School
+            </h3>
+            <p className="text-blue-400 font-medium mb-1">Science & Math</p>
+            <p className="text-sm text-gray-300">2020 - 2023</p>
+          </div>
 
-  {/* University Card */}
-  <div className="bg-[#0e0c24] p-6 rounded-xl w-full max-w-sm mx-auto shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-    <div className="text-8xl mb-4">🎓</div>
-    <h3 className="text-xl font-semibold mb-1">University of Phayao</h3>
-    <p className="text-blue-400 font-medium mb-1">Software Engineering</p>
-    <p className="text-sm">GPA: 3.03</p>
-    <p className="text-sm text-gray-300">2023 - Now</p>
-  </div>
-</div>
+          {/* University Card */}
+          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl w-full max-w-sm shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+            <div className="text-7xl mb-4">🎓</div>
+            <h3 className="text-xl font-semibold mb-1">University of Phayao</h3>
+            <p className="text-blue-400 font-medium mb-1">
+              Software Engineering
+            </p>
+            <p className="text-sm">GPA: 3.03</p>
+            <p className="text-sm text-gray-300">2023 - Now</p>
+          </div>
+        </div>
+      </section>
 
+      {/* Skills Section */}
+      <section
+        id="skills"
+        className="bg-white text-blue-900 py-24 px-6 text-center"
+      >
+        <h2 className="text-4xl font-bold text-center mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
+          🛠 Skills
+        </h2>
+
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 px-4">
+          {/* Computer Skill Card */}
+          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+            <h3 className="text-3xl font-semibold mb-4 pb-2 text-white flex items-center gap-2 border-b-2 border-blue-400">
+              💻 Computer Skill
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
+              <li>UX/UI Design (Figma)</li>
+              <li>Canva</li>
+              <li>Microsoft Office</li>
+              <li>VS Code</li>
+              <li>GitHub</li>
+            </ul>
+          </div>
+
+          {/* Coding Skill Card */}
+          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+            <h3 className="text-3xl font-semibold mb-4 pb-2 text-white flex items-center gap-2 border-b-2 border-blue-400">
+              👨‍💻 Coding Skill
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Next.js</li>
+              <li>TailwindCSS</li>
+              <li>JavaScript (basic)</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
