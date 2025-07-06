@@ -24,11 +24,11 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-fade-in-up">
+      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
+        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6">
           Hello, I&apos;m <span className="text-blue-400">Pisit</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
+        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto delay-200 animate-fade-in-up">
           I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
@@ -64,9 +64,8 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up delay-300"
+        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up delay-200"
       >
-        {/* รูปโปรไฟล์ */}
         <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24]  shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
           <Image
             src="/Photo.jpg"
@@ -77,14 +76,12 @@ export default function Home() {
           />
         </div>
 
-        {/* กล่องข้อมูล about me พร้อมเอฟเฟกต์เมื่อ hover */}
         <div className="bg-[#0e0c24] border border-blue-400 p-8 rounded-2xl shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 ease-in-out max-w-xl text-white text-center md:text-left">
           <h2 className="text-3xl font-bold mb-4 border-b-2 border-blue-500 inline-block pb-1">
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
-            I&apos;m{" "}
-            <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
+            I&apos;m <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
             seeking internship opportunities in{" "}
             <strong className="text-blue-400">Front-End Development</strong>,{" "}
@@ -106,7 +103,7 @@ export default function Home() {
       {/* Education Section */}
       <section
         id="education"
-        className="bg-blue-900 text-white py-24 px-6 text-center"
+        className="bg-blue-900 text-white py-24 px-6 text-center animate-fade-in-up delay-300"
       >
         <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-400 inline-block pb-2">
           🎓 Education
@@ -139,7 +136,7 @@ export default function Home() {
       {/* Skills Section */}
       <section
         id="skills"
-        className="bg-white text-blue-900 py-24 px-6 text-center"
+        className="bg-white text-blue-900 py-24 px-6 text-center animate-fade-in-up delay-400"
       >
         <h2 className="text-4xl font-bold text-center mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
           🛠 Skills
