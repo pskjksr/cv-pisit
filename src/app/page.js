@@ -10,7 +10,7 @@ export default function Home() {
       {/* Navbar */}
       <nav className="w-full fixed top-0 z-50 bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
-          {["About", "Skills", "Projects", "Education"].map((item) => (
+          {["About", "Education", "Skills", "Projects"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
