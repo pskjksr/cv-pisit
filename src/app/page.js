@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { FaGithub, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { FaUniversity } from "react-icons/fa";
 
@@ -93,6 +93,13 @@ export default function Home() {
             rel="noreferrer"
           >
             <SiGmail className="hover:text-blue-400 transition hover:-translate-y-1" />
+          </a>
+          <a
+            href="https://www.instagram.com/pisittatt_frd/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram className="hover:text-blue-400 transition hover:-translate-y-1" />
           </a>
         </div>
       </section>
