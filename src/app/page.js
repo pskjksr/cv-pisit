@@ -1,14 +1,52 @@
 "use client";
-
+import { useState } from "react";
 import Image from "next/image";
 import { FaGithub, FaFacebook } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { FaUniversity } from "react-icons/fa";
 
 export default function Home() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const educationList = [
+    {
+      icon: <FaUniversity />,
+      school: "University of Phayao",
+      major: "B.Eng. Software Engineering",
+      year: "2022 - Present",
+      gpa: "GPA: 3.50",
+    },
+    {
+      icon: <FaUniversity />,
+      school: "Chiang Rai Wittayakhom School",
+      major: "Science-Math Program",
+      year: "2016 - 2021",
+      gpa: "GPA: 3.75",
+    },
+  ];
+
+  const skillList = [
+    {
+      title: "Frontend Development",
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React.js",
+        "Next.js",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      title: "Tools & Design",
+      skills: ["Figma", "Git", "GitHub", "Canva", "VS Code", "Postman"],
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="w-full fixed top-0 z-50 bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
           {["About", "Education", "Skills", "Projects"].map((item) => (
             <a
@@ -23,24 +61,22 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6">
           Hello, I&apos;m <span className="text-blue-400">Pisit</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto delay-200 animate-fade-in-up">
+        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
           I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
         <a
           href="#about"
-          className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-xl backdrop-blur-md border border-white/10 transition"
+          className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-xl border border-white/10 transition"
         >
           Learn more ↓
         </a>
-
-        {/* Social Icons */}
-        <div className="flex justify-center gap-6 mt-10 text-3xl animate-fade-in-up delay-300">
+        <div className="flex justify-center gap-6 mt-10 text-3xl">
           <a href="https://github.com/pskjksr" target="_blank" rel="noreferrer">
             <FaGithub className="hover:text-blue-400 transition hover:-translate-y-1" />
           </a>
@@ -52,7 +88,7 @@ export default function Home() {
             <FaFacebook className="hover:text-blue-400 transition hover:-translate-y-1" />
           </a>
           <a
-            href="https://mail.google.com/mail/u/2/#inbox"
+            href="mailto:your-email@example.com"
             target="_blank"
             rel="noreferrer"
           >
@@ -61,12 +97,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About */}
       <section
         id="about"
-        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up delay-200"
+        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12"
       >
-        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24]  shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
+        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
           <Image
             src="/Photo.jpg"
             alt="Pisit portrait"
@@ -75,13 +111,13 @@ export default function Home() {
             className="object-cover w-full h-full"
           />
         </div>
-
-        <div className="bg-[#0e0c24] border border-blue-400 p-8 rounded-2xl shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 ease-in-out max-w-xl text-white text-center md:text-left">
+        <div className="bg-[#0e0c24] text-white p-8 rounded-2xl border border-blue-400 shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 max-w-xl text-center md:text-left">
           <h2 className="text-3xl font-bold mb-4 border-b-2 border-blue-500 inline-block pb-1">
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
-            I&apos;m <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
+            I&apos;m{" "}
+            <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
             seeking internship opportunities in{" "}
             <strong className="text-blue-400">Front-End Development</strong>,{" "}
@@ -90,7 +126,7 @@ export default function Home() {
             <strong className="text-blue-400">Nov 2025 - Mar 2026</strong>.
           </p>
           <a
-            href="/Resume .pdf"
+            href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition"
@@ -100,94 +136,144 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Education */}
       <section
         id="education"
-        className="bg-blue-900 text-white py-24 px-6 text-center animate-fade-in-up delay-300"
+        className="bg-gradient-to-b from-blue-900 to-blue-950 text-white py-24 px-6 text-center"
       >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-400 inline-block pb-2">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-400 inline-block pb-2">
           🎓 Education
         </h2>
 
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-stretch gap-10 px-4">
-          {/* School Card */}
-          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl w-full max-w-sm shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-            <div className="text-7xl mb-4">🏫</div>
-            <h3 className="text-xl font-semibold mb-1">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
+          {/* UNIVERSITY */}
+          <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
+            <div className="flex justify-center mb-4">
+              <FaUniversity className="text-6xl text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-semibold mb-2">
+              University of Phayao
+            </h3>
+            <p className="text-blue-300 font-medium mb-2">
+              Bachelor of Engineering (Software Engineering)
+            </p>
+            <p className="text-sm text-gray-200">GPA: 3.03</p>
+          </div>
+
+          {/* SCHOOL */}
+          <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
+            <div className="flex justify-center mb-4">
+              <FaUniversity className="text-6xl text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-semibold mb-2">
               Phayaophitthayakhom School
             </h3>
-            <p className="text-blue-400 font-medium mb-1">Science & Math</p>
-            <p className="text-sm text-gray-300">2020 - 2023</p>
-          </div>
-
-          {/* University Card */}
-          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl w-full max-w-sm shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-            <div className="text-7xl mb-4">🎓</div>
-            <h3 className="text-xl font-semibold mb-1">University of Phayao</h3>
-            <p className="text-blue-400 font-medium mb-1">
-              Software Engineering
-            </p>
-            <p className="text-sm">GPA: 3.03</p>
-            <p className="text-sm text-gray-300">2023 - Now</p>
+            <p className="text-blue-300 font-medium mb-2">Science & Math</p>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills */}
       <section
         id="skills"
-        className="bg-white text-blue-900 py-24 px-6 text-center animate-fade-in-up delay-400"
+        className="bg-white text-blue-900 py-24 px-6 text-center"
       >
-        <h2 className="text-4xl font-bold text-center mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
+        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
           🛠 Skills
         </h2>
-
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 px-4">
-          {/* Computer Skill Card */}
-          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-            <h3 className="text-3xl font-semibold mb-4 pb-2 text-white flex items-center gap-2 border-b-2 border-blue-400">
-              💻 Computer Skill
-            </h3>
-            <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
-              <li>UX/UI Design (Figma)</li>
-              <li>Canva</li>
-              <li>Microsoft Office</li>
-              <li>VS Code</li>
-              <li>GitHub</li>
-            </ul>
-          </div>
-
-          {/* Coding Skill Card */}
-          <div className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-            <h3 className="text-3xl font-semibold mb-4 pb-2 text-white flex items-center gap-2 border-b-2 border-blue-400">
-              👨‍💻 Coding Skill
-            </h3>
-            <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Next.js</li>
-              <li>TailwindCSS</li>
-              <li>JavaScript (basic)</li>
-            </ul>
-          </div>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+          {skillList.map(({ title, skills }) => (
+            <div
+              key={title}
+              className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+            >
+              <h3 className="text-3xl font-semibold mb-4 pb-2 text-white border-b-2 border-blue-400">
+                {title}
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
+                {skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative bg-blue-950 text-gray-400 py-10 text-center text-sm mt-20">
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 500 80"
-            preserveAspectRatio="none"
-            className="w-full h-10"
-          >
-            <path
-              d="M0,40 C150,80 350,0 500,40 L500,00 L0,0 Z"
-              className="fill-blue-900"
-            />
-          </svg>
+      {/* Projects */}
+      <section
+        id="projects"
+        className="bg-gradient-to-b from-blue-900 to-blue-950 text-white py-24 px-6 text-center"
+      >
+        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+          💼 My Projects
+        </h2>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {[
+            { name: "melodytune", image: "/Userflow_MelodyTune.png" },
+            {
+              name: "Second-hand IT Equipment Website",
+              image: "/Second-hand IT.png",
+            },
+            { name: "Cookzy", image: "/Cookzy.png" },
+          ].map(({ name, image }) => (
+            <div
+              key={name}
+              className="cursor-pointer bg-[#0e0c24] border border-blue-400 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 overflow-hidden"
+              onClick={() => setSelectedProject({ name, image })}
+            >
+              <div className="w-full h-48 bg-gray-800 flex items-center justify-center">
+                <Image
+                  src={image}
+                  alt={name}
+                  width={400}
+                  height={192}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="px-6 py-4 text-white text-lg font-semibold border-t border-blue-500">
+                {name}
+              </div>
+            </div>
+          ))}
         </div>
-      </footer>
+
+        {/* Modal */}
+        {selectedProject && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
+              >
+                ✕
+              </button>
+              <div className="flex flex-col items-center gap-6">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.name}
+                  width={500}
+                  height={300}
+                  className="rounded-lg border border-white object-contain"
+                />
+                <div className="flex gap-2 text-sm">
+                  <span className="bg-yellow-400 text-black px-3 py-1 rounded-full">
+                    Front-end Development, UX/UI
+                  </span>
+                  <span className="border border-white px-3 py-1 rounded-full">
+                    Education
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold">{selectedProject.name}</h3>
+                <p className="text-gray-300">
+                  This website redesigned from UP Req website
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
     </main>
   );
 }
