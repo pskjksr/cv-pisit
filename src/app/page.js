@@ -68,7 +68,7 @@ export default function Home() {
       >
         <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-400 shadow-xl hover:scale-105 transition duration-300">
           <Image
-            src="/photo1.jpg"
+            src="/Photo.jpg"
             alt="Pisit portrait"
             width={256}
             height={256}
