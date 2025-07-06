@@ -210,29 +210,47 @@ export default function Home() {
         </h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {[
-            { name: "melodytune", image: "/Userflow_MelodyTune.png" },
+            {
+              name: "melodytune",
+              image: "/Userflow_MelodyTune.png",
+              date: "Jul 2024 - Sep 2024",
+              tag: "Front-end Development, UX/UI",
+              description:
+                "In this project, I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page.",
+            },
             {
               name: "Second-hand IT Equipment Website",
               image: "/Second-hand IT.png",
+              date: "Jul 2024 - Sep 2024",
+              tag: "Front-end Development, UX/UI",
+              description:
+                "This project, I was mainly responsible for UX/UI design and front-end development. I primarily used Next.js to build the user interface and styled it with Tailwind CSS.",
             },
-            { name: "Cookzy", image: "/Cookzy.png" },
-          ].map(({ name, image }) => (
+            {
+              name: "Cookzy",
+              image: "/Cookzy.png",
+              date: "Dec 2024 - Feb 2025",
+              tag: "Front-end Development",
+              description:
+                "In this project, I mainly worked as a front-end developer using Next.js. My responsibilities focused on building the user interface, and I used Tailwind CSS for styling.",
+            },
+          ].map((project) => (
             <div
-              key={name}
+              key={project.name}
               className="cursor-pointer bg-[#0e0c24] border border-blue-400 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 overflow-hidden"
-              onClick={() => setSelectedProject({ name, image })}
+              onClick={() => setSelectedProject(project)}
             >
               <div className="w-full h-48 bg-gray-800 flex items-center justify-center">
                 <Image
-                  src={image}
-                  alt={name}
+                  src={project.image}
+                  alt={project.name}
                   width={400}
                   height={192}
                   className="object-cover w-full h-full"
                 />
               </div>
               <div className="px-6 py-4 text-white text-lg font-semibold border-t border-blue-500">
-                {name}
+                {project.name}
               </div>
             </div>
           ))}
@@ -256,24 +274,25 @@ export default function Home() {
                   height={300}
                   className="rounded-lg border border-white object-contain"
                 />
-                <div className="flex gap-2 text-sm">
-                  <span className="bg-yellow-400 text-black px-3 py-1 rounded-full">
-                    Front-end Development, UX/UI
+                <div className="flex gap-2 text-sm flex-wrap justify-center">
+                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
+                    {selectedProject.tag}
                   </span>
                   <span className="border border-white px-3 py-1 rounded-full">
-                    Education
+                    {selectedProject.date}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold">{selectedProject.name}</h3>
-                <p className="text-gray-300">
-                  This website redesigned from UP Req website
+                <h3 className="text-2xl font-bold text-center">
+                  {selectedProject.name}
+                </h3>
+                <p className="text-gray-300 text-center">
+                  {selectedProject.description}
                 </p>
               </div>
             </div>
           </div>
         )}
       </section>
-
     </main>
   );
 }
