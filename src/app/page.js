@@ -88,7 +88,7 @@ export default function Home() {
             <FaFacebook className="hover:text-blue-400 transition hover:-translate-y-1" />
           </a>
           <a
-            href="mailto:your-email@example.com"
+            href="https://mail.google.com/mail/u/2/#inbox"
             target="_blank"
             rel="noreferrer"
           >
@@ -293,6 +293,27 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      {/* Footer */}
+      <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden">
+        {/* Wave Effect */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
+          <svg
+            className="relative block w-[calc(100%+1.3px)] h-[80px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M985.66 31.81C912.36 54.1 838.06 70.86 763.75 77.8c-114.54 10.7-229.09-7.63-343.63-20.7-79.1-9.1-158.2-13.5-237.3-4.7C119.42 60.5 59.71 77.8 0 95.1V0h1200v27.35c-71.33 24.48-142.67 49-214.34 59.46z"
+              fill="#1e3a8a"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Footer Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6"></div>
+      </footer>
     </main>
   );
 }
