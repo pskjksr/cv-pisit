@@ -67,7 +67,7 @@ export default function Home() {
         className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up delay-300"
       >
         {/* รูปโปรไฟล์ */}
-        <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-400 shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
+        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24]  shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
           <Image
             src="/Photo.jpg"
             alt="Pisit portrait"
