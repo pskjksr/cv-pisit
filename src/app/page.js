@@ -258,7 +258,7 @@ export default function Home() {
 
         {/* Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="fixed inset-0  bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left">
               <button
                 onClick={() => setSelectedProject(null)}
