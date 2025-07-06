@@ -26,7 +26,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-fade-in-up">
-          Hello, I&apos;m <span className="text-blue-400">P</span>
+          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
           I&apos;m a passionate Software Engineering student who crafts clean,
