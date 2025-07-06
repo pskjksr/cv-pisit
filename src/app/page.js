@@ -6,7 +6,7 @@ import { SiGmail } from "react-icons/si";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-950 to-blue-900 text-white font-sans scroll-smooth">
+    <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth">
       {/* Navbar */}
       <nav className="w-full fixed top-0 z-50 bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
