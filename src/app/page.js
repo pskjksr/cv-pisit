@@ -48,10 +48,10 @@ export default function Home() {
       {/* Hero */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
-          Hello, I'm <span className="text-blue-400">Pisit</span>
+          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
-          I'm a passionate Software Engineering student who crafts clean,
+          I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
         <a
