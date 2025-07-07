@@ -155,7 +155,7 @@ export default function Home() {
             <strong className="text-blue-400">Nov 2025 - Mar 2026</strong>.
           </p>
           <a
-            href="/Resume.pdf"
+            href="/Resume-Pisit.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition"
