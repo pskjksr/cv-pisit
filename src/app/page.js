@@ -1,29 +1,11 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaFacebook, FaInstagram, FaUniversity } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { FaUniversity } from "react-icons/fa";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const educationList = [
-    {
-      icon: <FaUniversity />,
-      school: "University of Phayao",
-      major: "B.Eng. Software Engineering",
-      year: "2022 - Present",
-      gpa: "GPA: 3.50",
-    },
-    {
-      icon: <FaUniversity />,
-      school: "Chiang Rai Wittayakhom School",
-      major: "Science-Math Program",
-      year: "2016 - 2021",
-      gpa: "GPA: 3.75",
-    },
-  ];
 
   const skillList = [
     {
@@ -34,7 +16,7 @@ export default function Home() {
       title: "Tools & Design",
       skills: [
         "Figma",
-        "Microsoft(Word,Excel,PowerPoint)",
+        "Microsoft (Word, Excel, PowerPoint)",
         "GitHub",
         "Canva",
         "VS Code",
@@ -55,7 +37,6 @@ export default function Home() {
                 className="relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out"
               >
                 <span className="relative z-10">{item}</span>
-
                 {/* เส้นขีดใต้ */}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
@@ -290,7 +271,7 @@ export default function Home() {
 
         {/* Modal */}
         {selectedProject && (
-          <div className="fixed inset-0  bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left">
               <button
                 onClick={() => setSelectedProject(null)}
@@ -339,7 +320,7 @@ export default function Home() {
           {/* Certificate 1 */}
           <div className="flex flex-col items-center max-w-sm">
             <div className="relative group">
-              <div className="transition-transform duration-500 ease-in-out transform group-hover: group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
                 <Image
                   src="/framework.jpg"
                   alt="Certificate"
