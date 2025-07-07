@@ -339,7 +339,7 @@ export default function Home() {
           {/* Certificate 1 */}
           <div className="flex flex-col items-center max-w-sm">
             <div className="relative group">
-              <div className="transition-transform duration-500 ease-in-out transform group-hover: group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-400 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+              <div className="transition-transform duration-500 ease-in-out transform group-hover: group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
                 <Image
                   src="/framework.jpg"
                   alt="Certificate"
