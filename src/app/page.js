@@ -45,17 +45,19 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
-        <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-4 py-3">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
           {["About", "Education", "Skills", "Projects", "Certificates"].map(
             (item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="relative group hover:text-blue-400 transition"
+                className="relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out"
               >
-                {item}
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full scale-x-0 group-hover:scale-x-100 bg-blue-400 transition-transform origin-left duration-300"></span>
+                <span className="relative z-10">{item}</span>
+
+                {/* เส้นขีดใต้ */}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             )
           )}
