@@ -1,7 +1,12 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { FaGithub, FaFacebook, FaInstagram, FaUniversity } from "react-icons/fa";
+import {
+  FaGithub,
+  FaFacebook,
+  FaInstagram,
+  FaUniversity,
+} from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 export default function Home() {
@@ -27,39 +32,38 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-4 py-3">
-        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
-          {["About", "Education", "Skills", "Projects", "Certificates"].map(
-            (item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out"
-              >
-                <span className="relative z-10">{item}</span>
-                {/* เส้นขีดใต้ */}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            )
-          )}
-        </div>
-      </nav>
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-4 py-3 animate-fade-in-down">
+    <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
+      {["About", "Education", "Skills", "Projects", "Certificates"].map(
+        (item, index) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out animate-fade-in-up animation-delay-${index * 100}`}
+          >
+            <span className="relative z-10">{item}</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        )
+      )}
+    </div>
+  </nav>
 
       {/* Hero */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
-        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
-          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
-          I&apos;m a passionate Software Engineering student who crafts clean,
-          engaging, and accessible digital experiences.
-        </p>
-        <a
-          href="#about"
-          className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-xl border border-white/10 transition"
-        >
-          Learn more ↓
-        </a>
+    <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
+      Hello, I&apos;m <span className="text-blue-400">Pisit</span>
+    </h1>
+    <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
+      I&apos;m a passionate Software Engineering student who crafts clean,
+      engaging, and accessible digital experiences.
+    </p>
+    <a
+      href="#about"
+      className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-xl border border-white/10 transition animate-fade-in-up"
+    >
+      Learn more ↓
+    </a>
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>
             <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
@@ -69,7 +73,7 @@ export default function Home() {
         </svg>
 
         {/* Social Icons */}
-        <div className="flex justify-center gap-6 mt-10">
+       <div className="flex justify-center gap-6 mt-10 animate-fade-in-up">
           {[
             {
               icon: <FaGithub className="h-6 w-6 text-white" />,
@@ -113,18 +117,19 @@ export default function Home() {
       {/* About */}
       <section
         id="about"
-        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12"
-      >
-        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50">
-          <Image
-            src="/P.png"
-            alt="Pisit portrait"
-            width={256}
-            height={256}
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <div className="bg-[#0e0c24] text-white p-8 rounded-2xl border border-blue-400 shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 max-w-xl text-center md:text-left">
+    className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up"
+  >
+        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
+      <Image
+        src="/P.png"
+        alt="Pisit portrait"
+        width={256}
+        height={256}
+        className="object-cover w-full h-full"
+      />
+    </div>
+
+        <div className="bg-[#0e0c24] text-white p-8 rounded-2xl border border-blue-400 shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 max-w-xl text-center md:text-left animate-fade-in-up">
           <h2 className="text-3xl font-bold mb-4 border-b-2 border-blue-500 inline-block pb-1">
             📘 About Me
           </h2>
@@ -142,7 +147,7 @@ export default function Home() {
             href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition animate-zoom-in"
           >
             📄 Resume
           </a>
@@ -161,7 +166,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
           {/* UNIVERSITY */}
           <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 animate-float">
               <FaUniversity className="text-6xl text-blue-400" />
             </div>
             <h3 className="text-2xl font-semibold mb-2">
@@ -175,7 +180,7 @@ export default function Home() {
 
           {/* SCHOOL */}
           <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 animate-float">
               <FaUniversity className="text-6xl text-blue-400" />
             </div>
             <h3 className="text-2xl font-semibold mb-2">
@@ -191,14 +196,16 @@ export default function Home() {
         id="skills"
         className="bg-white text-blue-900 py-24 px-6 text-center animate-fade-in-up animation-delay-600"
       >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
+        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto animate-slide-in-left">
           🛠 Skills
         </h2>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-          {skillList.map(({ title, skills }) => (
+          {skillList.map(({ title, skills }, index) => (
             <div
               key={title}
-              className="bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+              className={`bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-${
+                index * 200
+              }`}
             >
               <h3 className="text-3xl font-semibold mb-4 pb-2 text-white border-b-2 border-blue-400">
                 {title}
@@ -250,7 +257,7 @@ export default function Home() {
           ].map((project) => (
             <div
               key={project.name}
-              className="cursor-pointer bg-[#0e0c24] border border-blue-400 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="cursor-pointer bg-[#0e0c24] border border-blue-400 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 overflow-hidden animate-zoom-in"
               onClick={() => setSelectedProject(project)}
             >
               <div className="w-full h-48 bg-gray-800 flex items-center justify-center">
@@ -310,8 +317,8 @@ export default function Home() {
       {/* Certificates Section */}
       <section
         id="certificates"
-        className="bg-white py-20 px-6 text-center text-blue-900"
-      >
+    className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
+  >
         <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           🏅 Certificates
         </h2>
@@ -319,7 +326,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl mx-auto">
           {/* Certificate 1 */}
           <div className="flex flex-col items-center max-w-sm">
-            <div className="relative group">
+            <div className="relative group animate-zoom-in">
               <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
                 <Image
                   src="/framework.jpg"
@@ -335,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden">
+      <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up">
         {/* Wave Effect */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 bg-white">
           <svg
