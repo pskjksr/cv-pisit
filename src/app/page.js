@@ -28,18 +28,17 @@ export default function Home() {
   const skillList = [
     {
       title: "Frontend Development",
-      skills: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-      ],
+      skills: ["HTML", "CSS", "JavaScript", "Next.js", "Tailwind CSS"],
     },
     {
       title: "Tools & Design",
-      skills: ["Figma", "Git", "GitHub", "Canva", "VS Code", "Postman"],
+      skills: [
+        "Figma",
+        "Microsoft(Word,Excel,PowerPoint)",
+        "GitHub",
+        "Canva",
+        "VS Code",
+      ],
     },
   ];
 
@@ -48,16 +47,18 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
-          {["About", "Education", "Skills", "Projects"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="relative group hover:text-blue-400 transition"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-full scale-x-0 group-hover:scale-x-100 bg-blue-400 transition-transform origin-left duration-300"></span>
-            </a>
-          ))}
+          {["About", "Education", "Skills", "Projects", "Certificates"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="relative group hover:text-blue-400 transition"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full scale-x-0 group-hover:scale-x-100 bg-blue-400 transition-transform origin-left duration-300"></span>
+              </a>
+            )
+          )}
         </div>
       </nav>
 
@@ -323,14 +324,41 @@ export default function Home() {
         )}
       </section>
 
+      {/* Certificates Section */}
+      <section
+        id="certificates"
+        className="bg-white py-20 px-6 text-center text-blue-900"
+      >
+        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+          🏅 Certificates
+        </h2>
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl mx-auto">
+          {/* Certificate 1 */}
+          <div className="flex flex-col items-center max-w-sm">
+            <div className="relative group">
+              <div className="transition-transform duration-500 ease-in-out transform group-hover: group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-400 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+                <Image
+                  src="/framework.jpg"
+                  alt="Certificate"
+                  width={500}
+                  height={350}
+                  className="object-contain w-full h-full rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden">
         {/* Wave Effect */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 bg-white">
           <svg
             className="relative block w-[calc(100%+1.3px)] h-[80px]"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
+            viewBox="0 0 900 200"
             preserveAspectRatio="none"
           >
             <path
