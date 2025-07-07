@@ -76,31 +76,53 @@ export default function Home() {
         >
           Learn more ↓
         </a>
-        <div className="flex justify-center gap-6 mt-10 text-3xl">
-          <a href="https://github.com/pskjksr" target="_blank" rel="noreferrer">
-            <FaGithub className="hover:text-blue-400 transition hover:-translate-y-1" />
-          </a>
-          <a
-            href="https://www.facebook.com/pisit.kunjomkawsiri/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaFacebook className="hover:text-blue-400 transition hover:-translate-y-1" />
-          </a>
-          <a
-            href="https://mail.google.com/mail/u/2/#inbox"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <SiGmail className="hover:text-blue-400 transition hover:-translate-y-1" />
-          </a>
-          <a
-            href="https://www.instagram.com/pisittatt_frd/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaInstagram className="hover:text-blue-400 transition hover:-translate-y-1" />
-          </a>
+        <svg width="0" height="0" style={{ position: "absolute" }}>
+          <defs>
+            <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
+              <path d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        {/* Social Icons */}
+        <div className="flex justify-center gap-6 mt-10">
+          {[
+            {
+              icon: <FaGithub className="h-6 w-6 text-white" />,
+              link: "https://github.com/pskjksr",
+              color: "from-gray-700 to-gray-900 border-gray-600/50",
+            },
+            {
+              icon: <FaFacebook className="h-6 w-6 text-white" />,
+              link: "https://www.facebook.com/pisit.kunjomkawsiri/",
+              color: "from-blue-600 to-blue-800 border-blue-500/50",
+            },
+            {
+              icon: <SiGmail className="h-6 w-6 text-white" />,
+              link: "https://mail.google.com/mail/u/2/#inbox",
+              color: "from-red-600 to-red-800 border-red-500/50",
+            },
+            {
+              icon: <FaInstagram className="h-6 w-6 text-white" />,
+              link: "https://www.instagram.com/pisittatt_frd/",
+              color: "from-indigo-600 to-indigo-800 border-indigo-500/50",
+            },
+          ].map((item, index) => (
+            <a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              className="relative"
+            >
+              <div
+                style={{ clipPath: "url(#squircleClip)" }}
+                className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-md cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg`}
+              >
+                {item.icon}
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
