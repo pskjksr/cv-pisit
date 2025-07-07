@@ -8,34 +8,10 @@ import { FaUniversity } from "react-icons/fa";
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const educationList = [
-    {
-      icon: <FaUniversity />,
-      school: "University of Phayao",
-      major: "B.Eng. Software Engineering",
-      year: "2022 - Present",
-      gpa: "GPA: 3.50",
-    },
-    {
-      icon: <FaUniversity />,
-      school: "Chiang Rai Wittayakhom School",
-      major: "Science-Math Program",
-      year: "2016 - 2021",
-      gpa: "GPA: 3.75",
-    },
-  ];
-
   const skillList = [
     {
       title: "Frontend Development",
-      skills: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-      ],
+      skills: ["HTML", "CSS", "JavaScript", "React.js", "Next.js", "Tailwind CSS"],
     },
     {
       title: "Tools & Design",
@@ -44,9 +20,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
+    <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-950 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-6 py-4 flex justify-center">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/80 backdrop-blur-md shadow-lg px-6 py-4 flex justify-center">
         <div className="flex gap-6 md:gap-10 text-sm font-semibold uppercase tracking-wide">
           {["About", "Education", "Skills", "Projects"].map((item) => (
             <a
@@ -76,13 +52,6 @@ export default function Home() {
         >
           Learn more ↓
         </a>
-        <svg width="0" height="0" style={{ position: "absolute" }}>
-          <defs>
-            <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5" />
-            </clipPath>
-          </defs>
-        </svg>
 
         {/* Social Icons */}
         <div className="flex justify-center gap-6 mt-10">
@@ -90,22 +59,18 @@ export default function Home() {
             {
               icon: <FaGithub className="h-6 w-6 text-white" />,
               link: "https://github.com/pskjksr",
-              color: "from-gray-700 to-gray-900 border-gray-600/50",
             },
             {
               icon: <FaFacebook className="h-6 w-6 text-white" />,
               link: "https://www.facebook.com/pisit.kunjomkawsiri/",
-              color: "from-blue-600 to-blue-800 border-blue-500/50",
             },
             {
               icon: <SiGmail className="h-6 w-6 text-white" />,
-              link: "https://mail.google.com/mail/u/2/#inbox",
-              color: "from-red-600 to-red-800 border-red-500/50",
+              link: "mailto:your-email@gmail.com",
             },
             {
               icon: <FaInstagram className="h-6 w-6 text-white" />,
               link: "https://www.instagram.com/pisittatt_frd/",
-              color: "from-indigo-600 to-indigo-800 border-indigo-500/50",
             },
           ].map((item, index) => (
             <a
@@ -113,14 +78,10 @@ export default function Home() {
               href={item.link}
               target="_blank"
               rel="noreferrer"
-              className="relative"
+              className="group relative w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 shadow-md flex items-center justify-center transform transition hover:scale-110 hover:-translate-y-1"
             >
-              <div
-                style={{ clipPath: "url(#squircleClip)" }}
-                className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-md cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg`}
-              >
-                {item.icon}
-              </div>
+              {item.icon}
+              <span className="sr-only">Social Link</span>
             </a>
           ))}
         </div>
@@ -145,8 +106,7 @@ export default function Home() {
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
-            I&apos;m{" "}
-            <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
+            I&apos;m <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
             seeking internship opportunities in{" "}
             <strong className="text-blue-400">Front-End Development</strong>,{" "}
@@ -173,40 +133,36 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-400 inline-block pb-2">
           🎓 Education
         </h2>
-
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
-          {/* UNIVERSITY */}
-          <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
-            <div className="flex justify-center mb-4">
-              <FaUniversity className="text-6xl text-blue-400" />
+          {[
+            {
+              icon: <FaUniversity className="text-6xl text-blue-400" />,
+              school: "University of Phayao",
+              major: "Bachelor of Engineering (Software Engineering)",
+              gpa: "GPA: 3.03",
+            },
+            {
+              icon: <FaUniversity className="text-6xl text-blue-400" />,
+              school: "Phayaophitthayakhom School",
+              major: "Science & Math Program",
+              gpa: "GPA: 3.75",
+            },
+          ].map((edu, index) => (
+            <div
+              key={index}
+              className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300"
+            >
+              <div className="flex justify-center mb-4">{edu.icon}</div>
+              <h3 className="text-2xl font-semibold mb-2">{edu.school}</h3>
+              <p className="text-blue-300 font-medium mb-2">{edu.major}</p>
+              <p className="text-sm text-gray-200">{edu.gpa}</p>
             </div>
-            <h3 className="text-2xl font-semibold mb-2">
-              University of Phayao
-            </h3>
-            <p className="text-blue-300 font-medium mb-2">
-              Bachelor of Engineering (Software Engineering)
-            </p>
-            <p className="text-sm text-gray-200">GPA: 3.03</p>
-          </div>
-
-          {/* SCHOOL */}
-          <div className="bg-[#0e0c24]/80 border border-blue-500 p-6 rounded-2xl shadow-xl backdrop-blur-md hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
-            <div className="flex justify-center mb-4">
-              <FaUniversity className="text-6xl text-blue-400" />
-            </div>
-            <h3 className="text-2xl font-semibold mb-2">
-              Phayaophitthayakhom School
-            </h3>
-            <p className="text-blue-300 font-medium mb-2">Science & Math</p>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Skills */}
-      <section
-        id="skills"
-        className="bg-white text-blue-900 py-24 px-6 text-center"
-      >
+      <section id="skills" className="bg-white text-blue-900 py-24 px-6 text-center">
         <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto">
           🛠 Skills
         </h2>
@@ -253,7 +209,7 @@ export default function Home() {
               date: "Jul 2024 - Sep 2024",
               tag: "Front-end Development, UX/UI",
               description:
-                "This project, I was mainly responsible for UX/UI design and front-end development. I primarily used Next.js to build the user interface and styled it with Tailwind CSS.",
+                "This project, I was mainly responsible for UX/UI design and front-end development using Next.js and Tailwind CSS.",
             },
             {
               name: "Cookzy",
@@ -261,7 +217,7 @@ export default function Home() {
               date: "Dec 2024 - Feb 2025",
               tag: "Front-end Development",
               description:
-                "In this project, I mainly worked as a front-end developer using Next.js. My responsibilities focused on building the user interface, and I used Tailwind CSS for styling.",
+                "I worked as a front-end developer using Next.js and Tailwind CSS to build responsive UI components.",
             },
           ].map((project) => (
             <div
@@ -287,8 +243,8 @@ export default function Home() {
 
         {/* Modal */}
         {selectedProject && (
-          <div className="fixed inset-0  bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left animate-fade-in">
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
@@ -311,12 +267,8 @@ export default function Home() {
                     {selectedProject.date}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-center">
-                  {selectedProject.name}
-                </h3>
-                <p className="text-gray-300 text-center">
-                  {selectedProject.description}
-                </p>
+                <h3 className="text-2xl font-bold text-center">{selectedProject.name}</h3>
+                <p className="text-gray-300 text-center">{selectedProject.description}</p>
               </div>
             </div>
           </div>
@@ -341,7 +293,20 @@ export default function Home() {
         </div>
 
         {/* Footer Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6"></div>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+          <p>&copy; 2025 Pisit Khunchomklaosiri. All rights reserved.</p>
+          <div className="flex gap-4">
+            <a href="https://github.com/pskjksr" target="_blank" rel="noreferrer">
+              <FaGithub className="h-6 w-6 hover:text-blue-400 transition" />
+            </a>
+            <a href="mailto:your-email@gmail.com">
+              <SiGmail className="h-6 w-6 hover:text-blue-400 transition" />
+            </a>
+            <a href="https://www.instagram.com/pisittatt_frd/" target="_blank" rel="noreferrer">
+              <FaInstagram className="h-6 w-6 hover:text-blue-400 transition" />
+            </a>
+          </div>
+        </div>
       </footer>
     </main>
   );
