@@ -315,31 +315,47 @@ export default function Home() {
       </section>
 
       {/* Certificates Section */}
-      <section
-        id="certificates"
-    className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
-  >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
-          🏅 Certificates
-        </h2>
+<section
+  id="certificates"
+  className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
+>
+  <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+    🏅 Certificates
+  </h2>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl mx-auto">
-          {/* Certificate 1 */}
-          <div className="flex flex-col items-center max-w-sm">
-            <div className="relative group animate-zoom-in">
-              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
-                <Image
-                  src="/framework.jpg"
-                  alt="Certificate"
-                  width={500}
-                  height={350}
-                  className="object-contain w-full h-full rounded-md"
-                />
-              </div>
-            </div>
-          </div>
+  <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
+    {/* Certificate 1 */}
+    <div className="flex flex-col items-center max-w-sm">
+      <div className="relative group animate-zoom-in">
+        <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+          <Image
+            src="/framework.jpg"
+            alt="Certificate 1"
+            width={500}
+            height={350}
+            className="object-contain w-full h-full rounded-md"
+          />
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Certificate 2 */}
+    <div className="flex flex-col items-center max-w-sm">
+      <div className="relative group animate-zoom-in">
+        <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+          <Image
+            src="/certificate.jpg"
+            alt="Certificate 2"
+            width={500}
+            height={350}
+            className="object-contain w-full h-full rounded-md"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up">
