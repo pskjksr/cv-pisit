@@ -32,38 +32,40 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/90 backdrop-blur-md shadow-md px-4 py-3 animate-fade-in-down">
-    <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
-      {["About", "Education", "Skills", "Projects", "Certificates"].map(
-        (item, index) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out animate-fade-in-up animation-delay-${index * 100}`}
-          >
-            <span className="relative z-10">{item}</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        )
-      )}
-    </div>
-  </nav>
+      <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-blue-950 via-blue-900/80 to-blue-950/90 shadow-xl backdrop-blur-sm px-4 py-3 rounded-b-xl">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
+          {["About", "Education", "Skills", "Projects", "Certificates"].map(
+            (item, index) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out animate-fade-in-up animation-delay-${
+                  index * 100
+                }`}
+              >
+                <span className="relative z-10">{item}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            )
+          )}
+        </div>
+      </nav>
 
       {/* Hero */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
-    <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
-      Hello, I&apos;m <span className="text-blue-400">Pisit</span>
-    </h1>
-    <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
-      I&apos;m a passionate Software Engineering student who crafts clean,
-      engaging, and accessible digital experiences.
-    </p>
-    <a
-      href="#about"
-      className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-xl border border-white/10 transition animate-fade-in-up"
-    >
-      Learn more ↓
-    </a>
+        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
+          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
+          I&apos;m a passionate Software Engineering student who crafts clean,
+          engaging, and accessible digital experiences.
+        </p>
+        <a
+          href="#about"
+          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/10 transition duration-300"
+        >
+          Learn more ↓
+        </a>
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>
             <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
@@ -73,7 +75,7 @@ export default function Home() {
         </svg>
 
         {/* Social Icons */}
-       <div className="flex justify-center gap-6 mt-10 animate-fade-in-up">
+        <div className="flex justify-center gap-6 mt-10 animate-fade-in-up">
           {[
             {
               icon: <FaGithub className="h-6 w-6 text-white" />,
@@ -117,17 +119,17 @@ export default function Home() {
       {/* About */}
       <section
         id="about"
-    className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up"
-  >
+        className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up"
+      >
         <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
-      <Image
-        src="/P.png"
-        alt="Pisit portrait"
-        width={256}
-        height={256}
-        className="object-cover w-full h-full"
-      />
-    </div>
+          <Image
+            src="/P.png"
+            alt="Pisit portrait"
+            width={256}
+            height={256}
+            className="object-cover w-full h-full"
+          />
+        </div>
 
         <div className="bg-[#0e0c24] text-white p-8 rounded-2xl border border-blue-400 shadow-xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 max-w-xl text-center md:text-left animate-fade-in-up">
           <h2 className="text-3xl font-bold mb-4 border-b-2 border-blue-500 inline-block pb-1">
@@ -210,9 +212,12 @@ export default function Home() {
               <h3 className="text-3xl font-semibold mb-4 pb-2 text-white border-b-2 border-blue-400">
                 {title}
               </h3>
-              <ul className="list-disc pl-5 space-y-2 text-lg text-white text-left">
+              <ul className="pl-0 space-y-2 text-lg text-white text-left">
                 {skills.map((skill) => (
-                  <li key={skill}>{skill}</li>
+                  <li key={skill} className="flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400"></span>
+                    {skill}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -234,17 +239,17 @@ export default function Home() {
               name: "melodytune",
               image: "/Userflow_MelodyTune.png",
               date: "Jul 2024 - Sep 2024",
-              tag: "Front-end Development, UX/UI",
+              tag: "UX/UI Design, Front-end",
               description:
-                "In this project, I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page.",
+                "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
             },
             {
               name: "Second-hand IT Equipment Website",
               image: "/Second-hand IT.png",
               date: "Jul 2024 - Sep 2024",
-              tag: "Front-end Development, UX/UI",
+              tag: "UX/UI Design, Front-end",
               description:
-                "This project, I was mainly responsible for UX/UI design and front-end development. I primarily used Next.js to build the user interface and styled it with Tailwind CSS.",
+                "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
             },
             {
               name: "Cookzy",
@@ -252,7 +257,15 @@ export default function Home() {
               date: "Dec 2024 - Feb 2025",
               tag: "Front-end Development",
               description:
-                "In this project, I mainly worked as a front-end developer using Next.js. My responsibilities focused on building the user interface, and I used Tailwind CSS for styling.",
+                "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
+            },
+            {
+              name: "SLRI FLOWER",
+              image: "/SLRI FLOWER.png",
+              date: "Oct 8 2023 - Oct 9 2023",
+              tag: "UX/UI Design",
+              description:
+                "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
             },
           ].map((project) => (
             <div
@@ -315,47 +328,46 @@ export default function Home() {
       </section>
 
       {/* Certificates Section */}
-<section
-  id="certificates"
-  className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
->
-  <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
-    🏅 Certificates
-  </h2>
+      <section
+        id="certificates"
+        className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
+      >
+        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+          🏅 Certificates
+        </h2>
 
-  <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
-    {/* Certificate 1 */}
-    <div className="flex flex-col items-center max-w-sm">
-      <div className="relative group animate-zoom-in">
-        <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
-          <Image
-            src="/framework.jpg"
-            alt="Certificate 1"
-            width={500}
-            height={350}
-            className="object-contain w-full h-full rounded-md"
-          />
+        <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
+          {/* Certificate 1 */}
+          <div className="flex flex-col items-center max-w-sm">
+            <div className="relative group animate-zoom-in">
+              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+                <Image
+                  src="/framework.jpg"
+                  alt="Certificate 1"
+                  width={500}
+                  height={350}
+                  className="object-contain w-full h-full rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Certificate 2 */}
+          <div className="flex flex-col items-center max-w-sm">
+            <div className="relative group animate-zoom-in">
+              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
+                <Image
+                  src="/certificate.jpg"
+                  alt="Certificate 2"
+                  width={500}
+                  height={350}
+                  className="object-contain w-full h-full rounded-md"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    {/* Certificate 2 */}
-    <div className="flex flex-col items-center max-w-sm">
-      <div className="relative group animate-zoom-in">
-        <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
-          <Image
-            src="/certificate.jpg"
-            alt="Certificate 2"
-            width={500}
-            height={350}
-            className="object-contain w-full h-full rounded-md"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Footer */}
       <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up">
