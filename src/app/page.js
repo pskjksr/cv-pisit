@@ -1,78 +1,45 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { SiCanva, SiTailwindcss, SiNextdotjs, SiFigma, SiGmail } from "react-icons/si";
 import {
   FaGithub,
   FaFacebook,
   FaInstagram,
   FaUniversity,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
 } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedProject]);
+    document.body.style.overflow = selectedProject || selectedSkill ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [selectedProject, selectedSkill]);
 
-  const skillList = [
-    {
-      title: "Frontend Development",
-      skills: ["HTML", "CSS", "JavaScript", "Next.js", "Tailwind CSS"],
-    },
-    {
-      title: "Tools & Design",
-      skills: [
-        "Figma",
-        "Microsoft (Word, Excel, PowerPoint)",
-        "GitHub",
-        "Canva",
-        "VS Code",
-      ],
-    },
+  const skills = [
+    { name: "UX/UI Design (Figma)", icon: <SiFigma size={28} />, description: "Designing interfaces with Figma" },
+    { name: "Canva", icon: <SiCanva size={28} />, description: "Graphic design tool for creating visual content" },
+    { name: "Github", icon: <FaGithub size={28} />, description: "Version control with Git and GitHub" },
+    { name: "Microsoft (Word, Excel, PowerPoint)", icon: <FaUniversity size={28} />, description: "Microsoft Office Suite tools" },
+    { name: "VS Code", icon: <FaReact size={28} />, description: "Popular code editor for web development" },
+    { name: "HTML", icon: <FaHtml5 size={28} />, description: "Markup language for structuring web content" },
+    { name: "TailwindCSS", icon: <SiTailwindcss size={28} />, description: "Utility-first CSS framework for styling" },
+    { name: "CSS", icon: <FaCss3Alt size={28} />, description: "Styling language for websites" },
+    { name: "JavaScript (basic)", icon: <FaJs size={28} />, description: "Basic scripting language for interactivity" },
+    { name: "Next.js", icon: <SiNextdotjs size={28} />, description: "React framework for server-side rendering" },
   ];
 
   const projectList = [
-    {
-      name: "melodytune",
-      image: "/Userflow_MelodyTune.png",
-      date: "Jul 2024 - Sep 2024",
-      tag: "UX/UI Design, Front-end",
-      description:
-        "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
-    },
-    {
-      name: "Second-hand IT Equipment Website",
-      image: "/Second-hand IT.png",
-      date: "Jul 2024 - Sep 2024",
-      tag: "UX/UI Design, Front-end",
-      description:
-        "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
-    },
-    {
-      name: "Cookzy",
-      image: "/Cookzy.png",
-      date: "Dec 2024 - Feb 2025",
-      tag: "Front-end Development",
-      description:
-        "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
-    },
-    {
-      name: "SLRI FLOWER",
-      image: "/SLRI FLOWER.png",
-      date: "Oct 8 2023 - Oct 9 2023",
-      tag: "UX/UI Design",
-      description:
-        "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
-    },
+    { name: "melodytune", image: "/Userflow_MelodyTune.png", date: "Jul 2024 - Sep 2024", tag: "UX/UI Design, Front-end", description: "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js." },
+    { name: "Second-hand IT Equipment Website", image: "/Second-hand IT.png", date: "Jul 2024 - Sep 2024", tag: "UX/UI Design, Front-end", description: "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS." },
+    { name: "Cookzy", image: "/Cookzy.png", date: "Dec 2024 - Feb 2025", tag: "Front-end Development", description: "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS." },
+    { name: "SLRI FLOWER", image: "/SLRI FLOWER.png", date: "Oct 8 2023 - Oct 9 2023", tag: "UX/UI Design", description: "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma." },
   ];
 
   return (
@@ -239,36 +206,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skill*/}
       <section
         id="skills"
-        className="bg-white text-blue-900 py-24 px-6 text-center animate-fade-in-up animation-delay-600"
+        className="bg-white text-blue-500 py-24 px-6 text-center"
       >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2 mx-auto animate-slide-in-left">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-blue-900 border-b-4 border-blue-500 inline-block pb-2">
           🛠 Skills
         </h2>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-          {skillList.map(({ title, skills }, index) => (
-            <div
-              key={title}
-              className={`bg-[#0e0c24] border border-blue-400 p-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-${
-                index * 200
-              }`}
+        <div className="max-w-5xl   mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {skills.map((skill) => (
+            <button
+              key={skill.name}
+              onClick={() => setSelectedSkill(skill)}
+              className="bg-[#0e0c24] text-white font-semibold rounded-2xl py-6 px-4 border border-blue-500 shadow-xl 
+             flex flex-col items-center justify-center text-center gap-2 hover:shadow-blue-500/60 
+             hover:scale-105 transition-all duration-300"
             >
-              <h3 className="text-3xl font-semibold mb-4 pb-2 text-white border-b-2 border-blue-400">
-                {title}
-              </h3>
-              <ul className="pl-0 space-y-2 text-lg text-white text-left">
-                {skills.map((skill) => (
-                  <li key={skill} className="flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400"></span>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <div className="text-2xl">{skill.icon}</div>
+              <span className="text-sm sm:text-base">{skill.name}</span>
+            </button>
           ))}
         </div>
+
+        {/* Skill Modal */}
+        {selectedSkill && (
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
+            onClick={() => setSelectedSkill(null)}
+          >
+            <div
+              className="bg-white text-[#0e0c24] p-6 rounded-xl w-80 text-center shadow-lg relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedSkill(null)}
+                className="absolute top-2 right-3 text-gray-500 hover:text-blue-500 text-xl"
+              >
+                ×
+              </button>
+              <div className="flex flex-col items-center gap-2">
+                <div className="text-4xl">{selectedSkill.icon}</div>
+                <h3 className="text-2xl font-bold">{selectedSkill.name}</h3>
+                <p className="text-md">{selectedSkill.description}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Projects */}
@@ -276,7 +260,7 @@ export default function Home() {
         id="projects"
         className="bg-gradient-to-b from-blue-900 to-blue-950 text-white py-24 px-6 text-center"
       >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           💼 My Projects
         </h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -304,58 +288,58 @@ export default function Home() {
 
         {/* Modal */}
         {selectedProject && (
-  <div
-    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
-    onClick={() => setSelectedProject(null)}
-  >
-    <div
-      className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left"
-      style={{
-        maxHeight:
-          selectedProject.name === "Second-hand IT Equipment Website" ||
-          selectedProject.name === "SLRI FLOWER"
-            ? "auto"
-            : "90vh",
-        overflowY:
-          selectedProject.name === "Second-hand IT Equipment Website" ||
-          selectedProject.name === "SLRI FLOWER"
-            ? "visible"
-            : "auto",
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      <button
-        onClick={() => setSelectedProject(null)}
-        className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
-      >
-        ✕
-      </button>
-      <div className="flex flex-col items-center gap-6">
-        <Image
-          src={selectedProject.image}
-          alt={selectedProject.name}
-          width={500}
-          height={300}
-          className="rounded-lg border border-white object-contain"
-        />
-        <div className="flex gap-2 text-sm flex-wrap justify-center">
-          <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
-            {selectedProject.tag}
-          </span>
-          <span className="border border-white px-3 py-1 rounded-full">
-            {selectedProject.date}
-          </span>
-        </div>
-        <h3 className="text-2xl font-bold text-center">
-          {selectedProject.name}
-        </h3>
-        <p className="text-gray-300 text-center">
-          {selectedProject.description}
-        </p>
-      </div>
-    </div>
-  </div>
-)}
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left"
+              style={{
+                maxHeight:
+                  selectedProject.name === "Second-hand IT Equipment Website" ||
+                  selectedProject.name === "SLRI FLOWER"
+                    ? "auto"
+                    : "90vh",
+                overflowY:
+                  selectedProject.name === "Second-hand IT Equipment Website" ||
+                  selectedProject.name === "SLRI FLOWER"
+                    ? "visible"
+                    : "auto",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
+              >
+                ✕
+              </button>
+              <div className="flex flex-col items-center gap-6">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.name}
+                  width={500}
+                  height={300}
+                  className="rounded-lg border border-white object-contain"
+                />
+                <div className="flex gap-2 text-sm flex-wrap justify-center">
+                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
+                    {selectedProject.tag}
+                  </span>
+                  <span className="border border-white px-3 py-1 rounded-full">
+                    {selectedProject.date}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-center">
+                  {selectedProject.name}
+                </h3>
+                <p className="text-gray-300 text-center">
+                  {selectedProject.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Certificates Section */}
@@ -363,7 +347,7 @@ export default function Home() {
         id="certificates"
         className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
       >
-        <h2 className="text-4xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           🏅 Certificates
         </h2>
 
