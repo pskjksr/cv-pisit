@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   FaGithub,
@@ -11,6 +11,17 @@ import { SiGmail } from "react-icons/si";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
 
   const skillList = [
     {
@@ -26,6 +37,41 @@ export default function Home() {
         "Canva",
         "VS Code",
       ],
+    },
+  ];
+
+  const projectList = [
+    {
+      name: "melodytune",
+      image: "/Userflow_MelodyTune.png",
+      date: "Jul 2024 - Sep 2024",
+      tag: "UX/UI Design, Front-end",
+      description:
+        "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
+    },
+    {
+      name: "Second-hand IT Equipment Website",
+      image: "/Second-hand IT.png",
+      date: "Jul 2024 - Sep 2024",
+      tag: "UX/UI Design, Front-end",
+      description:
+        "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
+    },
+    {
+      name: "Cookzy",
+      image: "/Cookzy.png",
+      date: "Dec 2024 - Feb 2025",
+      tag: "Front-end Development",
+      description:
+        "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
+    },
+    {
+      name: "SLRI FLOWER",
+      image: "/SLRI FLOWER.png",
+      date: "Oct 8 2023 - Oct 9 2023",
+      tag: "UX/UI Design",
+      description:
+        "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
     },
   ];
 
@@ -234,40 +280,7 @@ export default function Home() {
           💼 My Projects
         </h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {[
-            {
-              name: "melodytune",
-              image: "/Userflow_MelodyTune.png",
-              date: "Jul 2024 - Sep 2024",
-              tag: "UX/UI Design, Front-end",
-              description:
-                "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
-            },
-            {
-              name: "Second-hand IT Equipment Website",
-              image: "/Second-hand IT.png",
-              date: "Jul 2024 - Sep 2024",
-              tag: "UX/UI Design, Front-end",
-              description:
-                "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
-            },
-            {
-              name: "Cookzy",
-              image: "/Cookzy.png",
-              date: "Dec 2024 - Feb 2025",
-              tag: "Front-end Development",
-              description:
-                "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
-            },
-            {
-              name: "SLRI FLOWER",
-              image: "/SLRI FLOWER.png",
-              date: "Oct 8 2023 - Oct 9 2023",
-              tag: "UX/UI Design",
-              description:
-                "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
-            },
-          ].map((project) => (
+          {projectList.map((project) => (
             <div
               key={project.name}
               className="cursor-pointer bg-[#0e0c24] border border-blue-400 rounded-2xl shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 overflow-hidden animate-zoom-in"
@@ -291,40 +304,58 @@ export default function Home() {
 
         {/* Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left">
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
-              >
-                ✕
-              </button>
-              <div className="flex flex-col items-center gap-6">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.name}
-                  width={500}
-                  height={300}
-                  className="rounded-lg border border-white object-contain"
-                />
-                <div className="flex gap-2 text-sm flex-wrap justify-center">
-                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
-                    {selectedProject.tag}
-                  </span>
-                  <span className="border border-white px-3 py-1 rounded-full">
-                    {selectedProject.date}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-center">
-                  {selectedProject.name}
-                </h3>
-                <p className="text-gray-300 text-center">
-                  {selectedProject.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+  <div
+    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+    onClick={() => setSelectedProject(null)}
+  >
+    <div
+      className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left"
+      style={{
+        maxHeight:
+          selectedProject.name === "Second-hand IT Equipment Website" ||
+          selectedProject.name === "SLRI FLOWER"
+            ? "auto"
+            : "90vh",
+        overflowY:
+          selectedProject.name === "Second-hand IT Equipment Website" ||
+          selectedProject.name === "SLRI FLOWER"
+            ? "visible"
+            : "auto",
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={() => setSelectedProject(null)}
+        className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
+      >
+        ✕
+      </button>
+      <div className="flex flex-col items-center gap-6">
+        <Image
+          src={selectedProject.image}
+          alt={selectedProject.name}
+          width={500}
+          height={300}
+          className="rounded-lg border border-white object-contain"
+        />
+        <div className="flex gap-2 text-sm flex-wrap justify-center">
+          <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
+            {selectedProject.tag}
+          </span>
+          <span className="border border-white px-3 py-1 rounded-full">
+            {selectedProject.date}
+          </span>
+        </div>
+        <h3 className="text-2xl font-bold text-center">
+          {selectedProject.name}
+        </h3>
+        <p className="text-gray-300 text-center">
+          {selectedProject.description}
+        </p>
+      </div>
+    </div>
+  </div>
+)}
       </section>
 
       {/* Certificates Section */}
