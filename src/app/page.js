@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   SiCanva,
@@ -22,12 +22,84 @@ import {
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const certificateRef = useRef(null);
+  const cert1Ref = useRef(null);
+  const cert2Ref = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow =
       selectedProject || selectedSkill ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [selectedProject, selectedSkill]);
+
+  useEffect(() => {
+    const slider = certificateRef.current;
+    if (!slider) return;
+
+    // Scroll to center between cert1 and cert2 on load
+    if (cert1Ref.current && cert2Ref.current) {
+      const cert1Pos = cert1Ref.current.offsetLeft;
+      const cert2Pos = cert2Ref.current.offsetLeft;
+      const certWidth = cert1Ref.current.offsetWidth; // assume both same width
+
+      const centerPos = (cert1Pos + cert2Pos) / 2;
+      const scrollTo = centerPos - slider.clientWidth / 2 + certWidth / 2;
+
+      slider.scrollTo({
+        left: scrollTo,
+        behavior: "smooth",
+      });
+    }
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let animationFrameId;
+
+    const handleMouseDown = (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    };
+
+    const handleMouseLeave = () => {
+      isDown = false;
+      slider.classList.remove("active");
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+
+    const handleMouseUp = () => {
+      isDown = false;
+      slider.classList.remove("active");
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // scroll speed
+
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(() => {
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    };
+
+    slider.addEventListener("mousedown", handleMouseDown);
+    slider.addEventListener("mouseleave", handleMouseLeave);
+    slider.addEventListener("mouseup", handleMouseUp);
+    slider.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      slider.removeEventListener("mousedown", handleMouseDown);
+      slider.removeEventListener("mouseleave", handleMouseLeave);
+      slider.removeEventListener("mouseup", handleMouseUp);
+      slider.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   const skills = [
     {
@@ -428,33 +500,75 @@ export default function Home() {
           🏅 Certificates
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
-          {/* Certificate 1 */}
-          <div className="flex flex-col items-center max-w-sm">
-            <div className="relative group animate-zoom-in">
-              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
-                <Image
-                  src="/framework.jpg"
-                  alt="Certificate 1"
-                  width={500}
-                  height={350}
-                  className="object-contain w-full h-full rounded-md"
-                />
+        {/* Scrollable Certificate Row (no scrollbar) */}
+        <div
+          ref={certificateRef}
+          className="overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing"
+        >
+          <div className="flex gap-6 w-max px-4">
+            {/* Certificate 1 */}
+            <div
+              ref={cert1Ref}
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]"
+            >
+              <div className="group animate-zoom-in">
+                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
+                  <Image
+                    src="/framework.jpg"
+                    alt="Certificate 1"
+                    width={700}
+                    height={500}
+                    className="object-contain w-full h-full rounded-md"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Certificate 2 */}
-          <div className="flex flex-col items-center max-w-sm">
-            <div className="relative group animate-zoom-in">
-              <div className="transition-transform duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-2 border-blue-500 shadow-lg bg-gradient-to-br from-blue-100 to-white">
-                <Image
-                  src="/certificate.jpg"
-                  alt="Certificate 2"
-                  width={500}
-                  height={350}
-                  className="object-contain w-full h-full rounded-md"
-                />
+            {/* Certificate 2 */}
+            <div
+              ref={cert2Ref}
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]"
+            >
+              <div className="group animate-zoom-in">
+                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
+                  <Image
+                    src="/certificate.jpg"
+                    alt="Certificate 2"
+                    width={700}
+                    height={500}
+                    className="object-contain w-full h-full rounded-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Certificate 3 */}
+            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]">
+              <div className="group animate-zoom-in">
+                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
+                  <Image
+                    src="/borntodev SQL .png"
+                    alt="Certificate 3"
+                    width={700}
+                    height={500}
+                    className="object-contain w-full h-full rounded-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Certificate 4 */}
+            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]">
+              <div className="group animate-zoom-in">
+                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
+                  <Image
+                    src="/borntodev GitHub .png"
+                    alt="Certificate 4"
+                    width={700}
+                    height={500}
+                    className="object-contain w-full h-full rounded-md"
+                  />
+                </div>
               </div>
             </div>
           </div>
