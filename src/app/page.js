@@ -1,7 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { SiCanva, SiTailwindcss, SiNextdotjs, SiFigma, SiGmail } from "react-icons/si";
+import {
+  SiCanva,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFigma,
+  SiGmail,
+} from "react-icons/si";
 import {
   FaGithub,
   FaFacebook,
@@ -18,28 +24,97 @@ export default function Home() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   useEffect(() => {
-    document.body.style.overflow = selectedProject || selectedSkill ? "hidden" : "";
+    document.body.style.overflow =
+      selectedProject || selectedSkill ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [selectedProject, selectedSkill]);
 
   const skills = [
-    { name: "UX/UI Design (Figma)", icon: <SiFigma size={28} />, description: "Designing interfaces with Figma" },
-    { name: "Canva", icon: <SiCanva size={28} />, description: "Graphic design tool for creating visual content" },
-    { name: "Github", icon: <FaGithub size={28} />, description: "Version control with Git and GitHub" },
-    { name: "Microsoft (Word, Excel, PowerPoint)", icon: <FaUniversity size={28} />, description: "Microsoft Office Suite tools" },
-    { name: "VS Code", icon: <FaReact size={28} />, description: "Popular code editor for web development" },
-    { name: "HTML", icon: <FaHtml5 size={28} />, description: "Markup language for structuring web content" },
-    { name: "TailwindCSS", icon: <SiTailwindcss size={28} />, description: "Utility-first CSS framework for styling" },
-    { name: "CSS", icon: <FaCss3Alt size={28} />, description: "Styling language for websites" },
-    { name: "JavaScript (basic)", icon: <FaJs size={28} />, description: "Basic scripting language for interactivity" },
-    { name: "Next.js", icon: <SiNextdotjs size={28} />, description: "React framework for server-side rendering" },
+    {
+      name: "UX/UI Design (Figma)",
+      icon: <SiFigma size={28} />,
+      description: "Designing interfaces with Figma",
+    },
+    {
+      name: "Canva",
+      icon: <SiCanva size={28} />,
+      description: "Graphic design tool for creating visual content",
+    },
+    {
+      name: "Github",
+      icon: <FaGithub size={28} />,
+      description: "Version control with Git and GitHub",
+    },
+    {
+      name: "Microsoft (Word, Excel, PowerPoint)",
+      icon: <FaUniversity size={28} />,
+      description: "Microsoft Office Suite tools",
+    },
+    {
+      name: "VS Code",
+      icon: <FaReact size={28} />,
+      description: "Popular code editor for web development",
+    },
+    {
+      name: "HTML",
+      icon: <FaHtml5 size={28} />,
+      description: "Markup language for structuring web content",
+    },
+    {
+      name: "TailwindCSS",
+      icon: <SiTailwindcss size={28} />,
+      description: "Utility-first CSS framework for styling",
+    },
+    {
+      name: "CSS",
+      icon: <FaCss3Alt size={28} />,
+      description: "Styling language for websites",
+    },
+    {
+      name: "JavaScript (basic)",
+      icon: <FaJs size={28} />,
+      description: "Basic scripting language for interactivity",
+    },
+    {
+      name: "Next.js",
+      icon: <SiNextdotjs size={28} />,
+      description: "React framework for server-side rendering",
+    },
   ];
 
   const projectList = [
-    { name: "melodytune", image: "/Userflow_MelodyTune.png", date: "Jul 2024 - Sep 2024", tag: "UX/UI Design, Front-end", description: "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js." },
-    { name: "Second-hand IT Equipment Website", image: "/Second-hand IT.png", date: "Jul 2024 - Sep 2024", tag: "UX/UI Design, Front-end", description: "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS." },
-    { name: "Cookzy", image: "/Cookzy.png", date: "Dec 2024 - Feb 2025", tag: "Front-end Development", description: "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS." },
-    { name: "SLRI FLOWER", image: "/SLRI FLOWER.png", date: "Oct 8 2023 - Oct 9 2023", tag: "UX/UI Design", description: "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma." },
+    {
+      name: "melodytune",
+      image: "/Userflow_MelodyTune.png",
+      date: "Jul 2024 - Sep 2024",
+      tag: "UX/UI Design, Front-end",
+      description:
+        "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
+    },
+    {
+      name: "Second-hand IT Equipment Website",
+      image: "/Second-hand IT.png",
+      date: "Jul 2024 - Sep 2024",
+      tag: "UX/UI Design, Front-end",
+      description:
+        "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
+    },
+    {
+      name: "Cookzy",
+      image: "/Cookzy.png",
+      date: "Dec 2024 - Feb 2025",
+      tag: "Front-end Development",
+      description:
+        "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
+    },
+    {
+      name: "SLRI FLOWER",
+      image: "/SLRI FLOWER.png",
+      date: "Oct 8 2023 - Oct 9 2023",
+      tag: "UX/UI Design",
+      description:
+        "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
+    },
   ];
 
   return (
@@ -236,19 +311,21 @@ export default function Home() {
             onClick={() => setSelectedSkill(null)}
           >
             <div
-              className="bg-white text-[#0e0c24] p-6 rounded-xl w-80 text-center shadow-lg relative"
+              className="bg-[#0e0c24] text-white p-6 rounded-xl w-80 text-center shadow-lg relative border border-blue-500"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setSelectedSkill(null)}
-                className="absolute top-2 right-3 text-gray-500 hover:text-blue-500 text-xl"
+                className="absolute top-2 right-3 text-gray-300 hover:text-blue-400 text-xl"
               >
                 ×
               </button>
               <div className="flex flex-col items-center gap-2">
                 <div className="text-4xl">{selectedSkill.icon}</div>
                 <h3 className="text-2xl font-bold">{selectedSkill.name}</h3>
-                <p className="text-md">{selectedSkill.description}</p>
+                <p className="text-md text-blue-100">
+                  {selectedSkill.description}
+                </p>
               </div>
             </div>
           </div>
