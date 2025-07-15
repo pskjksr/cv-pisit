@@ -38,6 +38,17 @@ export default function Home() {
   }, [selectedProject, selectedSkill]);
 
   useEffect(() => {
+    if (selectedProject || selectedSkill) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject, selectedSkill]);
+
+  useEffect(() => {
     const slider = certificateRef.current;
     if (!slider) return;
 
