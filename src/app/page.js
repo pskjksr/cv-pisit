@@ -27,9 +27,14 @@ export default function Home() {
   const cert2Ref = useRef(null);
 
   useEffect(() => {
-    document.body.style.overflow =
-      selectedProject || selectedSkill ? "hidden" : "";
-    return () => (document.body.style.overflow = "");
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        if (selectedProject) setSelectedProject(null);
+        if (selectedSkill) setSelectedSkill(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedProject, selectedSkill]);
 
   useEffect(() => {
@@ -51,6 +56,22 @@ export default function Home() {
       });
     }
 
+    let touchStartX = 0;
+    let scrollStartX = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartX = e.touches[0].pageX;
+      scrollStartX = slider.scrollLeft;
+    };
+
+    const handleTouchMove = (e) => {
+      const touchX = e.touches[0].pageX;
+      const walk = (touchStartX - touchX) * 2; // scroll speed like mouse
+      slider.scrollLeft = scrollStartX + walk;
+    };
+
+    slider.addEventListener("touchstart", handleTouchStart);
+    slider.addEventListener("touchmove", handleTouchMove);
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -97,6 +118,8 @@ export default function Home() {
       slider.removeEventListener("mouseleave", handleMouseLeave);
       slider.removeEventListener("mouseup", handleMouseUp);
       slider.removeEventListener("mousemove", handleMouseMove);
+      slider.removeEventListener("touchstart", handleTouchStart);
+      slider.removeEventListener("touchmove", handleTouchMove);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -379,23 +402,31 @@ export default function Home() {
         {/* Skill Modal */}
         {selectedSkill && (
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="skill-title"
+            aria-describedby="skill-desc"
             className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
             onClick={() => setSelectedSkill(null)}
           >
             <div
               className="bg-[#0e0c24] text-white p-6 rounded-xl w-80 text-center shadow-lg relative border border-blue-500"
               onClick={(e) => e.stopPropagation()}
+              tabIndex={-1}
             >
               <button
                 onClick={() => setSelectedSkill(null)}
+                aria-label="Close skill details"
                 className="absolute top-2 right-3 text-gray-300 hover:text-blue-400 text-xl"
               >
                 ×
               </button>
               <div className="flex flex-col items-center gap-2">
                 <div className="text-4xl">{selectedSkill.icon}</div>
-                <h3 className="text-2xl font-bold">{selectedSkill.name}</h3>
-                <p className="text-md text-blue-100">
+                <h3 id="skill-title" className="text-2xl font-bold">
+                  {selectedSkill.name}
+                </h3>
+                <p id="skill-desc" className="text-md text-blue-100">
                   {selectedSkill.description}
                 </p>
               </div>
@@ -435,9 +466,13 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Modal */}
+        {/* Project Modal */}
         {selectedProject && (
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-title"
+            aria-describedby="project-desc"
             className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
             onClick={() => setSelectedProject(null)}
           >
@@ -456,9 +491,11 @@ export default function Home() {
                     : "auto",
               }}
               onClick={(e) => e.stopPropagation()}
+              tabIndex={-1}
             >
               <button
                 onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
                 className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
               >
                 ✕
@@ -479,10 +516,13 @@ export default function Home() {
                     {selectedProject.date}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-center">
+                <h3
+                  id="project-title"
+                  className="text-2xl font-bold text-center"
+                >
                   {selectedProject.name}
                 </h3>
-                <p className="text-gray-300 text-center">
+                <p id="project-desc" className="text-gray-300 text-center">
                   {selectedProject.description}
                 </p>
               </div>
@@ -503,73 +543,61 @@ export default function Home() {
         {/* Scrollable Certificate Row (no scrollbar) */}
         <div
           ref={certificateRef}
-          className="overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing"
+          className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing"
         >
-          <div className="flex gap-6 w-max px-4">
+          <div className="flex gap-8 w-max px-6 py-2">
             {/* Certificate 1 */}
             <div
               ref={cert1Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
             >
-              <div className="group animate-zoom-in">
-                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
-                  <Image
-                    src="/framework.jpg"
-                    alt="Certificate 1"
-                    width={700}
-                    height={500}
-                    className="object-contain w-full h-full rounded-md"
-                  />
-                </div>
-              </div>
+              <Image
+                src="/framework.jpg"
+                alt="Certificate 1"
+                width={700}
+                height={500}
+                className="object-contain w-full h-full rounded-2xl"
+                draggable={false}
+              />
             </div>
 
             {/* Certificate 2 */}
             <div
               ref={cert2Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
             >
-              <div className="group animate-zoom-in">
-                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
-                  <Image
-                    src="/certificate.jpg"
-                    alt="Certificate 2"
-                    width={700}
-                    height={500}
-                    className="object-contain w-full h-full rounded-md"
-                  />
-                </div>
-              </div>
+              <Image
+                src="/certificate.jpg"
+                alt="Certificate 2"
+                width={700}
+                height={500}
+                className="object-contain w-full h-full rounded-2xl"
+                draggable={false}
+              />
             </div>
 
             {/* Certificate 3 */}
-            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]">
-              <div className="group animate-zoom-in">
-                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
-                  <Image
-                    src="/borntodev SQL .png"
-                    alt="Certificate 3"
-                    width={700}
-                    height={500}
-                    className="object-contain w-full h-full rounded-md"
-                  />
-                </div>
-              </div>
+            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default">
+              <Image
+                src="/borntodev SQL .png"
+                alt="Certificate 3"
+                width={700}
+                height={500}
+                className="object-contain w-full h-full rounded-2xl"
+                draggable={false}
+              />
             </div>
 
             {/* Certificate 4 */}
-            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px]">
-              <div className="group animate-zoom-in">
-                <div className="transition-transform duration-500 transform group-hover:shadow-blue-400/60 rounded-xl overflow-hidden border-4 border-blue-500 shadow-xl bg-gradient-to-br from-blue-100 to-white">
-                  <Image
-                    src="/borntodev GitHub .png"
-                    alt="Certificate 4"
-                    width={700}
-                    height={500}
-                    className="object-contain w-full h-full rounded-md"
-                  />
-                </div>
-              </div>
+            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default">
+              <Image
+                src="/borntodev GitHub .png"
+                alt="Certificate 4"
+                width={700}
+                height={500}
+                className="object-contain w-full h-full rounded-2xl"
+                draggable={false}
+              />
             </div>
           </div>
         </div>
