@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { VscVscode } from "react-icons/vsc";
+import { FaFileWord, FaFileExcel, FaFilePowerpoint } from "react-icons/fa";
 import {
   SiCanva,
   SiTailwindcss,
@@ -152,13 +154,19 @@ export default function Home() {
       description: "Version control with Git and GitHub",
     },
     {
-      name: "Microsoft (Word, Excel, PowerPoint)",
-      icon: <FaUniversity size={28} />,
+      name: "Microsoft Office (Word, Excel, PowerPoint)",
+      icon: (
+        <div className="flex gap-2 text-white">
+          <FaFileWord size={24} />
+          <FaFileExcel size={24} />
+          <FaFilePowerpoint size={24} />
+        </div>
+      ),
       description: "Microsoft Office Suite tools",
     },
     {
       name: "VS Code",
-      icon: <FaReact size={28} />,
+      icon: <VscVscode size={28} />, // หรือเลือกไอคอนอื่น ๆ ใน vsc ตามที่ชอบ
       description: "Popular code editor for web development",
     },
     {
@@ -248,15 +256,16 @@ export default function Home() {
       {/* Hero */}
       <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
-          Hello, I&apos;m <span className="text-blue-400">Pisit</span>
+          Hello, I&apos;m{" "}
+          <span className="text-blue-400 animate-pulse">Pisit</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up">
+        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up animate-delay-300">
           I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
         <a
           href="#about"
-          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/10 transition duration-300"
+          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/10 transition duration-300 hover:scale-105 animate-fade-in-up animate-delay-500"
         >
           Learn more ↓
         </a>
@@ -401,8 +410,8 @@ export default function Home() {
               key={skill.name}
               onClick={() => setSelectedSkill(skill)}
               className="bg-[#0e0c24] text-white font-semibold rounded-2xl py-6 px-4 border border-blue-500 shadow-xl 
-             flex flex-col items-center justify-center text-center gap-2 hover:shadow-blue-500/60 
-             hover:scale-105 transition-all duration-300"
+flex flex-col items-center justify-center text-center gap-2 hover:shadow-blue-500/60 
+hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
             >
               <div className="text-2xl">{skill.icon}</div>
               <span className="text-sm sm:text-base">{skill.name}</span>
@@ -614,8 +623,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ด้านล่างสุดก่อน Footer */}
+      <a
+        href="#"
+        className="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition z-50"
+        aria-label="Back to top"
+      >
+        ↑
+      </a>
       {/* Footer */}
-      <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up">
+      <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up animate-delay-500">
         {/* Wave Effect */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 bg-white">
           <svg
