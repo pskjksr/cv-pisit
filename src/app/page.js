@@ -27,6 +27,9 @@ export default function Home() {
   const certificateRef = useRef(null);
   const cert1Ref = useRef(null);
   const cert2Ref = useRef(null);
+  const cert3Ref = useRef(null);
+  const cert4Ref = useRef(null);
+  const cert5Ref = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -234,7 +237,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-blue-950 via-blue-900/80 to-blue-950/90 shadow-xl backdrop-blur-sm px-4 py-3 rounded-b-xl">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/80 backdrop-blur-sm px-4 py-3 rounded-b-xl transition-shadow duration-300">
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
           {["About", "Education", "Skills", "Projects", "Certificates"].map(
             (item, index) => (
@@ -576,7 +579,7 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
                 alt="Certificate 1"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl"
+                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 draggable={false}
               />
             </div>
@@ -591,45 +594,51 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
                 alt="Certificate 2"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl"
+                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 draggable={false}
               />
             </div>
 
             {/* Certificate 3 */}
-            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default">
+            <div
+              ref={cert3Ref}
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+            >
               <Image
                 src="/borntodev SQL .png"
                 alt="Certificate 3"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl"
+                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 draggable={false}
               />
             </div>
 
             {/* Certificate 4 */}
-            <div className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default">
+            <div
+              ref={cert4Ref}
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+            >
               <Image
                 src="/borntodev GitHub .png"
                 alt="Certificate 4"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl"
+                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 draggable={false}
               />
             </div>
             {/* Certificate 5 */}
             <div
-              ref={cert2Ref}
+              ref={cert5Ref}
               className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
             >
               <Image
                 src="/certificate LLM.jpg"
-                alt="Certificate 2"
+                alt="Certificate 5"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl"
+                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 draggable={false}
               />
             </div>
@@ -640,11 +649,12 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
       {/* ด้านล่างสุดก่อน Footer */}
       <a
         href="#"
-        className="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition z-50"
+        className="fixed bottom-6 right-6 bg-gradient-to-br from-blue-500 to-blue-700 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 z-50"
         aria-label="Back to top"
       >
         ↑
       </a>
+
       {/* Footer */}
       <footer className="relative bg-blue-950 text-white pt-16 pb-8 mt-[-1px] overflow-hidden animate-fade-in-up animate-delay-500">
         {/* Wave Effect */}
