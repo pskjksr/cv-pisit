@@ -619,6 +619,20 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
                 draggable={false}
               />
             </div>
+            {/* Certificate 5 */}
+            <div
+              ref={cert2Ref}
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+            >
+              <Image
+                src="/certificate LLM.jpg"
+                alt="Certificate 2"
+                width={700}
+                height={500}
+                className="object-contain w-full h-full rounded-2xl"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
       </section>
