@@ -21,6 +21,19 @@ import {
   FaReact,
 } from "react-icons/fa";
 
+// Custom hook for modal focus trap (simple version)
+function useFocusTrap(isOpen) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (isOpen && ref.current) {
+      ref.current.focus();
+    }
+  }, [isOpen]);
+
+  return ref;
+}
+
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
@@ -31,6 +44,11 @@ export default function Home() {
   const cert4Ref = useRef(null);
   const cert5Ref = useRef(null);
 
+  // Modal refs with focus trap
+  const skillModalRef = useFocusTrap(!!selectedSkill);
+  const projectModalRef = useFocusTrap(!!selectedProject);
+
+  // Handle ESC key to close modals
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -42,6 +60,7 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedProject, selectedSkill]);
 
+  // Prevent background scroll when modal open
   useEffect(() => {
     if (selectedProject || selectedSkill) {
       document.body.style.overflow = "hidden";
@@ -53,75 +72,39 @@ export default function Home() {
     };
   }, [selectedProject, selectedSkill]);
 
+  // Scroll certificates initial and drag/scroll handlers
   useEffect(() => {
     const slider = certificateRef.current;
     if (!slider) return;
 
-    // Scroll to center between cert1 and cert2 on load
-    if (cert1Ref.current && cert2Ref.current) {
-      const cert1Pos = cert1Ref.current.offsetLeft;
-      const cert2Pos = cert2Ref.current.offsetLeft;
-      const certWidth = cert1Ref.current.offsetWidth; // assume both same width
-
-      const centerPos = (cert1Pos + cert2Pos) / 2;
-      const scrollTo = centerPos - slider.clientWidth / 2 + certWidth / 2;
-
-      slider.scrollTo({
-        left: scrollTo,
-        behavior: "smooth",
-      });
-    }
-
-    let touchStartX = 0;
-    let scrollStartX = 0;
-
-    const handleTouchStart = (e) => {
-      touchStartX = e.touches[0].pageX;
-      scrollStartX = slider.scrollLeft;
-    };
-
-    const handleTouchMove = (e) => {
-      const touchX = e.touches[0].pageX;
-      const walk = (touchStartX - touchX) * 2; // scroll speed like mouse
-      slider.scrollLeft = scrollStartX + walk;
-    };
-
-    slider.addEventListener("touchstart", handleTouchStart);
-    slider.addEventListener("touchmove", handleTouchMove);
     let isDown = false;
-    let startX;
-    let scrollLeft;
-    let animationFrameId;
+    let startX = 0;
+    let scrollLeft = 0;
 
     const handleMouseDown = (e) => {
       isDown = true;
       slider.classList.add("active");
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
+      slider.classList.add("grabbing");
     };
 
     const handleMouseLeave = () => {
       isDown = false;
-      slider.classList.remove("active");
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      slider.classList.remove("grabbing");
     };
 
     const handleMouseUp = () => {
       isDown = false;
-      slider.classList.remove("active");
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      slider.classList.remove("grabbing");
     };
 
     const handleMouseMove = (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2; // scroll speed
-
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(() => {
-        slider.scrollLeft = scrollLeft - walk;
-      });
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
     };
 
     slider.addEventListener("mousedown", handleMouseDown);
@@ -169,7 +152,7 @@ export default function Home() {
     },
     {
       name: "VS Code",
-      icon: <VscVscode size={28} />, // หรือเลือกไอคอนอื่น ๆ ใน vsc ตามที่ชอบ
+      icon: <VscVscode size={28} />,
       description: "Popular code editor for web development",
     },
     {
@@ -234,10 +217,36 @@ export default function Home() {
     },
   ];
 
+  // Track current section in viewport for navbar aria-current
+  const [currentSection, setCurrentSection] = useState("about");
+  useEffect(() => {
+    const sections = [
+      "about",
+      "education",
+      "skills",
+      "projects",
+      "certificates",
+    ];
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      let selected = sections[0];
+      for (const sec of sections) {
+        const el = document.getElementById(sec);
+        if (el && scrollY >= el.offsetTop - window.innerHeight / 3) {
+          selected = sec;
+        }
+      }
+      setCurrentSection(selected);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/80 backdrop-blur-sm px-4 py-3 rounded-b-xl transition-shadow duration-300">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/60 backdrop-blur-md shadow-md px-4 py-3 rounded-b-2xl border-b border-blue-700">
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
           {["About", "Education", "Skills", "Projects", "Certificates"].map(
             (item, index) => (
@@ -268,7 +277,10 @@ export default function Home() {
         </p>
         <a
           href="#about"
-          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/10 transition duration-300 hover:scale-105 animate-fade-in-up animate-delay-500"
+          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 
+  hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold 
+  shadow-xl hover:shadow-blue-500/40 border border-white/10 transition duration-300 
+  hover:scale-110 hover:backdrop-blur-md animate-fade-in-up animate-delay-500"
         >
           Learn more ↓
         </a>
@@ -355,7 +367,10 @@ export default function Home() {
             href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium shadow-md transition animate-zoom-in"
+            className="relative inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md 
+  font-medium shadow-md transition animate-zoom-in border border-blue-300 hover:shadow-blue-400/60
+  before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-br before:from-white/10 
+  before:to-white/0 before:blur-sm before:opacity-60 before:animate-pulse"
           >
             📄 Resume
           </a>
@@ -399,7 +414,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skill*/}
+      {/* Skill */}
       <section
         id="skills"
         className="bg-white text-blue-500 py-24 px-6 text-center"
@@ -407,14 +422,26 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-blue-900 border-b-4 border-blue-500 inline-block pb-2">
           🛠 Skills
         </h2>
-        <div className="max-w-5xl   mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {skills.map((skill) => (
+
+        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {skills.map((skill, index) => (
             <button
               key={skill.name}
               onClick={() => setSelectedSkill(skill)}
-              className="bg-[#0e0c24] text-white font-semibold rounded-2xl py-6 px-4 border border-blue-500 shadow-xl 
-flex flex-col items-center justify-center text-center gap-2 hover:shadow-blue-500/60 
-hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
+              role="button"
+              tabIndex={0}
+              className={`cursor-pointer bg-[#0e0c24] text-white font-semibold rounded-2xl py-6 px-4 
+        border border-blue-500 shadow-xl flex flex-col items-center justify-center text-center gap-2 
+        opacity-0 hover:shadow-blue-500/60 hover:scale-105 hover:ring-2 hover:ring-blue-400 
+        transition-all duration-300`}
+              style={{
+                animationName: "fade-in-up, float",
+                animationDuration: `0.5s, ${3 + (index % 3)}s`,
+                animationTimingFunction: "ease-out, ease-in-out",
+                animationDelay: `${index * 100}ms, 0s`,
+                animationIterationCount: "1, infinite",
+                animationFillMode: "forwards, none",
+              }}
             >
               <div className="text-2xl">{skill.icon}</div>
               <span className="text-sm sm:text-base">{skill.name}</span>
@@ -433,14 +460,15 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
             onClick={() => setSelectedSkill(null)}
           >
             <div
-              className="bg-[#0e0c24] text-white p-6 rounded-xl w-80 text-center shadow-lg relative border border-blue-500"
+              className="bg-[#0e0c24] text-white p-6 rounded-xl w-80 text-center shadow-lg relative border border-blue-500 
+        transform scale-95 animate-fade-in-up transition-transform duration-300"
               onClick={(e) => e.stopPropagation()}
               tabIndex={-1}
             >
               <button
                 onClick={() => setSelectedSkill(null)}
                 aria-label="Close skill details"
-                className="absolute top-2 right-3 text-gray-300 hover:text-blue-400 text-xl"
+                className="absolute top-2 right-3 text-gray-300 hover:text-blue-400 text-xl transition-transform hover:scale-125"
               >
                 ×
               </button>
@@ -500,7 +528,8 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
             onClick={() => setSelectedProject(null)}
           >
             <div
-              className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left"
+              className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left 
+  transform scale-95 animate-fade-in-up"
               style={{
                 maxHeight:
                   selectedProject.name === "Second-hand IT Equipment Website" ||
@@ -557,16 +586,15 @@ hover:scale-105 hover:ring-2 hover:ring-blue-400 transition-all duration-300"
       {/* Certificates Section */}
       <section
         id="certificates"
-        className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up"
+        className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up relative"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           🏅 Certificates
         </h2>
 
-        {/* Scrollable Certificate Row (no scrollbar) */}
         <div
           ref={certificateRef}
-          className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing"
+          className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
         >
           <div className="flex gap-8 w-max px-6 py-2">
             {/* Certificate 1 */}
