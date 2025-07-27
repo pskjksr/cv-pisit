@@ -345,7 +345,7 @@ export default function Home() {
       >
         <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
           <Image
-            src="/P.png"
+            src="/Pe.jpg"
             alt="Pisit portrait"
             width={256}
             height={256}
@@ -588,7 +588,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white px-4 py-1.5 rounded-full font-medium text-sm transition hover:scale-105"
                     >
-                      <SiFigma className="text-lg" /> ดูใน Figma
+                      <SiFigma className="text-lg" /> View
                     </a>
                   )}
                 </div>
