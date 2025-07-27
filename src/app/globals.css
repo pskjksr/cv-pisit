@@ -239,5 +239,20 @@ html {
 a, button {
   transition: all 0.3s ease;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-effect {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  animation: typing 3s steps(40, end) forwards;
+}
 
 }

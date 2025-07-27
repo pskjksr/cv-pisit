@@ -51,7 +51,8 @@ export default function Home() {
   const cert3Ref = useRef(null);
   const cert4Ref = useRef(null);
   const cert5Ref = useRef(null);
-
+  const heroText =
+    "I'm a passionate Software Engineering student who crafts clean, engaging, and accessible digital experiences.";
   // Modal refs with focus trap
   const skillModalRef = useFocusTrap(!!selectedSkill);
   const projectModalRef = useFocusTrap(!!selectedProject);
@@ -300,9 +301,19 @@ export default function Home() {
         </h1>
 
         {/* 🟡 Subtext */}
-        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up animate-delay-300">
-          I&apos;m a passionate Software Engineering student who crafts clean,
-          engaging, and accessible digital experiences.
+        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed flex flex-wrap justify-center gap-1">
+          {heroText.split(" ").map((word, index) => (
+            <span
+              key={index}
+              className="opacity-0 animate-fade-in-up"
+              style={{
+                animationDelay: `${index * 100}ms`,
+                animationFillMode: "forwards",
+              }}
+            >
+              {word}
+            </span>
+          ))}
         </p>
 
         {/* 🔘 CTA Button */}
