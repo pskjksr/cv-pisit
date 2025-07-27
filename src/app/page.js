@@ -262,7 +262,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/50 backdrop-blur-lg shadow-lg px-4 py-3 rounded-b-2xl border-b border-blue-700">
+      <nav className="fixed top-0 z-50 w-full bg-gradient-to-r from-blue-950/80 to-blue-900/80 backdrop-blur-xl shadow-2xl px-4 py-3 rounded-b-2xl border-b border-blue-700">
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
           {[
             { label: "About" },
@@ -308,10 +308,10 @@ export default function Home() {
         {/* 🔘 CTA Button */}
         <a
           href="#about"
-          className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 
-    hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold 
-    shadow-xl hover:shadow-blue-500/40 border border-white/10 transition duration-300 
-    hover:scale-110 hover:backdrop-blur-lg backdrop-brightness-125 animate-fade-in-up animate-delay-500"
+          className="inline-block bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600
+  hover:from-cyan-600 hover:to-indigo-700 text-white px-6 py-3 rounded-full font-bold 
+  shadow-lg hover:shadow-indigo-500/60 border border-white/20 transition-transform 
+  duration-300 hover:scale-110"
         >
           Learn more ↓
         </a>
@@ -558,12 +558,11 @@ export default function Home() {
             aria-modal="true"
             aria-labelledby="project-title"
             aria-describedby="project-desc"
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in-up"
             onClick={() => setSelectedProject(null)}
           >
             <div
-              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white p-8 rounded-2xl max-w-xl relative shadow-2xl text-left 
-transform scale-95 animate-fade-in-up"
+              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 text-white p-8 rounded-2xl max-w-xl relative shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] ring-1 ring-white/10 transition-all duration-300 scale-95 hover:scale-100"
               style={{
                 maxHeight:
                   selectedProject.name === "Second-hand IT Equipment Website" ||
@@ -583,7 +582,7 @@ transform scale-95 animate-fade-in-up"
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close project details"
-                className="absolute top-4 right-4 text-white text-xl hover:text-blue-400 transition"
+                className="absolute top-4 right-4 text-white text-2xl hover:text-blue-500 transition-all duration-200 hover:scale-110"
               >
                 ✕
               </button>
@@ -591,21 +590,23 @@ transform scale-95 animate-fade-in-up"
               {/* เนื้อหา Modal */}
               <div className="flex flex-col items-center gap-6">
                 {/* รูปโปรเจกต์ */}
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.name}
-                  width={450}
-                  height={300}
-                  className="rounded-lg border border-white object-contain"
-                />
+                <div className="overflow-hidden rounded-xl border border-white/20 transition-transform duration-300 hover:scale-105">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    width={450}
+                    height={300}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
 
                 {/* tag + date + figma */}
                 <div className="flex justify-between items-center w-full flex-wrap gap-2">
                   <div className="flex gap-2 text-sm flex-wrap">
-                    <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
+                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full shadow">
                       {selectedProject.tag}
                     </span>
-                    <span className="border border-white px-3 py-1 rounded-full">
+                    <span className="border border-white/40 px-3 py-1 rounded-full text-gray-200">
                       {selectedProject.date}
                     </span>
                   </div>
@@ -615,9 +616,9 @@ transform scale-95 animate-fade-in-up"
                       href={selectedProject.figmaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white px-4 py-1.5 rounded-full font-medium text-sm transition hover:scale-105"
+                      className="flex items-center gap-2 bg-gradient-to-r from-purple-800 to-blue-800 hover:from-purple-700 hover:to-blue-700 px-4 py-1.5 rounded-full font-medium text-sm transition hover:scale-105 shadow-lg"
                     >
-                      <SiFigma className="text-lg" /> View
+                      <SiFigma className="text-lg text-pink-400" /> View
                     </a>
                   )}
                 </div>
@@ -625,12 +626,15 @@ transform scale-95 animate-fade-in-up"
                 {/* ชื่อและคำอธิบาย */}
                 <h3
                   id="project-title"
-                  className="text-2xl font-bold text-center"
+                  className="text-2xl font-bold text-center text-white"
                 >
                   {selectedProject.name}
                 </h3>
 
-                <p id="project-desc" className="text-gray-300 text-center">
+                <p
+                  id="project-desc"
+                  className="text-gray-300 text-center leading-relaxed"
+                >
                   {selectedProject.description}
                 </p>
               </div>
