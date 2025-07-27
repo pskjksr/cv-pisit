@@ -20,6 +20,14 @@ import {
   FaJs,
   FaReact,
 } from "react-icons/fa";
+<head>
+  <meta property="og:title" content="Pisit Portfolio" />
+  <meta property="og:image" content="/Pe.jpg" />
+  <meta
+    name="description"
+    content="Portfolio of Pisit - Software Engineer & UI Designer"
+  />
+</head>;
 
 // Custom hook for modal focus trap (simple version)
 function useFocusTrap(isOpen) {
@@ -254,46 +262,61 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-900 text-white font-sans scroll-smooth animate-fade-in">
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full bg-blue-950/60 backdrop-blur-md shadow-md px-4 py-3 rounded-b-2xl border-b border-blue-700">
+      <nav className="fixed top-0 z-50 w-full bg-blue-950/50 backdrop-blur-lg shadow-lg px-4 py-3 rounded-b-2xl border-b border-blue-700">
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-semibold uppercase tracking-wide max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
-          {["About", "Education", "Skills", "Projects", "Certificates"].map(
-            (item, index) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out ${
-                  currentSection === item.toLowerCase()
-                    ? "text-blue-400 font-bold"
-                    : ""
-                }`}
-              >
-                <span className="relative z-10">{item}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            )
-          )}
+          {[
+            { label: "About" },
+            { label: "Education" },
+            { label: "Skills" },
+            { label: "Projects" },
+            { label: "Certificates" },
+          ].map(({ label, icon }) => (
+            <a
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out ${
+                currentSection === label.toLowerCase()
+                  ? "text-blue-400 font-bold"
+                  : ""
+              }`}
+            >
+              <span className="relative z-10">
+                {icon} {label}
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          ))}
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
-        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-6 animate-float">
+      <section className="relative pt-40 pb-24 px-6 max-w-4xl mx-auto text-center animate-fade-in-up">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-blue-900/10 to-black/20 blur-3xl" />
+
+        {/* 🟢 Headline */}
+        <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-[0_2px_20px_rgba(59,130,246,0.5)] mb-6 animate-float">
           Hello, I&apos;m{" "}
           <span className="text-blue-400 animate-pulse">Pisit</span>
         </h1>
+
+        {/* 🟡 Subtext */}
         <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed animate-fade-in-up animate-delay-300">
           I&apos;m a passionate Software Engineering student who crafts clean,
           engaging, and accessible digital experiences.
         </p>
+
+        {/* 🔘 CTA Button */}
         <a
           href="#about"
           className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 
-  hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold 
-  shadow-xl hover:shadow-blue-500/40 border border-white/10 transition duration-300 
-  hover:scale-110 hover:backdrop-blur-md animate-fade-in-up animate-delay-500"
+    hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold 
+    shadow-xl hover:shadow-blue-500/40 border border-white/10 transition duration-300 
+    hover:scale-110 hover:backdrop-blur-lg backdrop-brightness-125 animate-fade-in-up animate-delay-500"
         >
           Learn more ↓
         </a>
+
+        {/* 🌀 SVG clip for icon shapes */}
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>
             <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
@@ -302,8 +325,8 @@ export default function Home() {
           </defs>
         </svg>
 
-        {/* Social Icons */}
-        <div className="flex justify-center gap-6 mt-10 animate-fade-in-up">
+        {/* 🔗 Social Icons */}
+        <div className="flex justify-center gap-6 mt-10 animate-fade-in-up animate-delay-700">
           {[
             {
               icon: <FaGithub className="h-6 w-6 text-white" />,
@@ -331,11 +354,11 @@ export default function Home() {
               href={item.link}
               target="_blank"
               rel="noreferrer"
-              className="relative"
+              className="relative group"
             >
               <div
                 style={{ clipPath: "url(#squircleClip)" }}
-                className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-md cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg`}
+                className={`group w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-md cursor-pointer transition-all duration-300 ease-out transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg ring-1 ring-white/10 group-hover:ring-2 group-hover:ring-white/30`}
               >
                 {item.icon}
               </div>
@@ -351,7 +374,7 @@ export default function Home() {
       >
         <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
           <Image
-            src="/Pe.jpg"
+            src="/P.jpg"
             alt="Pisit portrait"
             width={256}
             height={256}
@@ -470,8 +493,8 @@ export default function Home() {
             onClick={() => setSelectedSkill(null)}
           >
             <div
-              className="bg-[#0e0c24] text-white p-6 rounded-xl w-80 text-center shadow-lg relative border border-blue-500 
-        transform scale-95 animate-fade-in-up transition-transform duration-300"
+              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white p-6 rounded-xl w-80 text-center shadow-lg relative
+  transform scale-95 animate-fade-in-up transition-transform duration-300"
               onClick={(e) => e.stopPropagation()}
               tabIndex={-1}
             >
@@ -535,12 +558,12 @@ export default function Home() {
             aria-modal="true"
             aria-labelledby="project-title"
             aria-describedby="project-desc"
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
             onClick={() => setSelectedProject(null)}
           >
             <div
-              className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left 
-        transform scale-95 animate-fade-in-up"
+              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white p-8 rounded-2xl max-w-xl relative shadow-2xl text-left 
+transform scale-95 animate-fade-in-up"
               style={{
                 maxHeight:
                   selectedProject.name === "Second-hand IT Equipment Website" ||
