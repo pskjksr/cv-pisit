@@ -190,7 +190,8 @@ export default function Home() {
       tag: "UX/UI Design, Front-end",
       description:
         "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
-      figmaUrl: "https://www.figma.com/board/TGi11Alp8MhroaDeGlyEjB/Userflow_MelodyTune?node-id=0-1&t=MjbozE2iQLfeVGau-1",  
+      figmaUrl:
+        "https://www.figma.com/board/TGi11Alp8MhroaDeGlyEjB/Userflow_MelodyTune?node-id=0-1&t=MjbozE2iQLfeVGau-1",
     },
     {
       name: "Second-hand IT Equipment Website",
@@ -199,7 +200,8 @@ export default function Home() {
       tag: "UX/UI Design, Front-end",
       description:
         "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
-      figmaUrl: "https://www.figma.com/design/a5H753Sy32naDHeBCoGSMU/Design?node-id=9-706&t=ncYqW9eZ3kbZACQb-1",  
+      figmaUrl:
+        "https://www.figma.com/design/a5H753Sy32naDHeBCoGSMU/Design?node-id=9-706&t=ncYqW9eZ3kbZACQb-1",
     },
     {
       name: "Cookzy",
@@ -208,7 +210,8 @@ export default function Home() {
       tag: "Front-end Development",
       description:
         "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
-      figmaUrl: "https://www.figma.com/design/F2e70oBKFuebGMwn7oogPs/Untitled--Copy-?node-id=0-1&t=fF0kat7pMB9OjCXK-1",  
+      figmaUrl:
+        "https://www.figma.com/design/F2e70oBKFuebGMwn7oogPs/Untitled--Copy-?node-id=0-1&t=fF0kat7pMB9OjCXK-1",
     },
     {
       name: "SLRI FLOWER",
@@ -217,7 +220,8 @@ export default function Home() {
       tag: "UX/UI Design",
       description:
         "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
-      figmaUrl: "https://www.figma.com/design/GWdx6Z59agTYB29bk8bU4W/Untitled?node-id=0-1&t=kjmhSdXMMtjFnhkb-1", 
+      figmaUrl:
+        "https://www.figma.com/design/GWdx6Z59agTYB29bk8bU4W/Untitled?node-id=0-1&t=kjmhSdXMMtjFnhkb-1",
     },
   ];
 
@@ -257,8 +261,10 @@ export default function Home() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out animate-fade-in-up animation-delay-${
-                  index * 100
+                className={`relative group px-2 py-1 text-white hover:text-blue-400 transition-all duration-300 ease-in-out ${
+                  currentSection === item.toLowerCase()
+                    ? "text-blue-400 font-bold"
+                    : ""
                 }`}
               >
                 <span className="relative z-10">{item}</span>
