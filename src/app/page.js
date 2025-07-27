@@ -657,7 +657,7 @@ export default function Home() {
       {/* Certificates Section */}
       <section
         id="certificates"
-        className="bg-white py-20 px-6 text-center text-blue-900 animate-fade-in-up relative"
+        className="bg-gradient-to-b from-white to-white py-20 px-6 text-center text-blue-900 animate-fade-in-up relative"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           🏅 Certificates
@@ -667,80 +667,119 @@ export default function Home() {
           ref={certificateRef}
           className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
         >
+          <button
+            onClick={() =>
+              certificateRef.current.scrollBy({
+                left: -400,
+                behavior: "smooth",
+              })
+            }
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white border border-blue-300 text-blue-700 rounded-full shadow-md p-2 hover:bg-blue-100 transition"
+          >
+            ←
+          </button>
           <div className="flex gap-8 w-max px-6 py-2">
             {/* Certificate 1 */}
             <div
               ref={cert1Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-auto rounded-2xl bg-white border-4 border-blue-300 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
             >
               <Image
                 src="/framework.jpg"
                 alt="Certificate 1"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="object-contain w-full h-[220px] md:h-[280px] rounded-t-xl"
                 draggable={false}
               />
+              <div className="p-3 bg-[#0e0c24] text-white font-bold text-sm md:text-base">
+                Framework
+              </div>
             </div>
 
             {/* Certificate 2 */}
             <div
               ref={cert2Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-auto rounded-2xl bg-white border-4 border-blue-300 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
             >
               <Image
                 src="/certificate.jpg"
                 alt="Certificate 2"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="object-contain w-full h-[220px] md:h-[280px] rounded-t-xl"
                 draggable={false}
               />
+              <div className="p-3 bg-[#0e0c24] text-white font-bold text-sm md:text-base">
+                ปัญญาประดิษฐ์กับภาพทางการเเพทย์
+              </div>
             </div>
 
             {/* Certificate 3 */}
             <div
               ref={cert3Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-auto rounded-2xl bg-white border-4 border-blue-300 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
             >
               <Image
                 src="/borntodev SQL .png"
                 alt="Certificate 3"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="object-contain w-full h-[220px] md:h-[280px] rounded-t-xl"
                 draggable={false}
               />
+              <div className="p-3 bg-[#0e0c24] text-white font-bold text-sm md:text-base">
+                SQL Fundamentals (BorntoDev)
+              </div>
             </div>
 
             {/* Certificate 4 */}
             <div
               ref={cert4Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-auto rounded-2xl bg-white border-4 border-blue-300 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
             >
               <Image
                 src="/borntodev GitHub .png"
                 alt="Certificate 4"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="object-contain w-full h-[220px] md:h-[280px] rounded-t-xl"
                 draggable={false}
               />
+              <div className="p-3 bg-[#0e0c24] text-white font-bold text-sm md:text-base">
+                Git & GitHub (BorntoDev)
+              </div>
             </div>
+
             {/* Certificate 5 */}
             <div
               ref={cert5Ref}
-              className="flex-shrink-0 w-[380px] md:w-[460px] h-[271px] md:h-[357px] rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white border-4 border-blue-400 overflow-hidden cursor-default"
+              className="flex-shrink-0 w-[380px] md:w-[460px] h-auto rounded-2xl bg-white border-4 border-blue-300 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
             >
               <Image
                 src="/certificate LLM.jpg"
                 alt="Certificate 5"
                 width={700}
                 height={500}
-                className="object-contain w-full h-full rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="object-contain w-full h-[220px] md:h-[280px] rounded-t-xl"
                 draggable={false}
               />
+              <div className="p-3 bg-[#0e0c24] text-white font-bold text-sm md:text-base">
+                ThaiLLM
+              </div>
             </div>
+            {/* Scroll Right */}
+            <button
+              onClick={() =>
+                certificateRef.current.scrollBy({
+                  left: 400,
+                  behavior: "smooth",
+                })
+              }
+              className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white border border-blue-300 text-blue-700 rounded-full shadow-md p-2 hover:bg-blue-100 transition"
+            >
+              →
+            </button>
           </div>
         </div>
       </section>
@@ -772,7 +811,9 @@ export default function Home() {
         </div>
 
         {/* Footer Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6"></div>
+        <div className="mt-8 text-center text-xs text-gray-400">
+          &copy; {new Date().getFullYear()} Pisit Khunchomklaosiri.
+        </div>
       </footer>
     </main>
   );
