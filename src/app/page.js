@@ -190,6 +190,7 @@ export default function Home() {
       tag: "UX/UI Design, Front-end",
       description:
         "I was responsible for designing the UX/UI for 3 pages and developing the front-end for 1 page using tools like Figma and Next.js.",
+      figmaUrl: "https://www.figma.com/board/TGi11Alp8MhroaDeGlyEjB/Userflow_MelodyTune?node-id=0-1&t=MjbozE2iQLfeVGau-1",  
     },
     {
       name: "Second-hand IT Equipment Website",
@@ -198,6 +199,7 @@ export default function Home() {
       tag: "UX/UI Design, Front-end",
       description:
         "I handled both UX/UI design and front-end development. I designed the interface with Figma and built it using Next.js and Tailwind CSS.",
+      figmaUrl: "https://www.figma.com/design/a5H753Sy32naDHeBCoGSMU/Design?node-id=9-706&t=ncYqW9eZ3kbZACQb-1",  
     },
     {
       name: "Cookzy",
@@ -206,6 +208,7 @@ export default function Home() {
       tag: "Front-end Development",
       description:
         "I worked as a front-end developer, building responsive user interfaces using Next.js and styling them with Tailwind CSS.",
+      figmaUrl: "https://www.figma.com/design/F2e70oBKFuebGMwn7oogPs/Untitled--Copy-?node-id=0-1&t=fF0kat7pMB9OjCXK-1",  
     },
     {
       name: "SLRI FLOWER",
@@ -214,6 +217,7 @@ export default function Home() {
       tag: "UX/UI Design",
       description:
         "I was responsible for UX/UI design, focusing on creating a clean and user-friendly interface using tools like Figma.",
+      figmaUrl: "https://www.figma.com/design/GWdx6Z59agTYB29bk8bU4W/Untitled?node-id=0-1&t=kjmhSdXMMtjFnhkb-1", 
     },
   ];
 
@@ -494,6 +498,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-bold mb-16 border-b-4 border-blue-500 inline-block pb-2">
           💼 My Projects
         </h2>
+
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {projectList.map((project) => (
             <div
@@ -529,7 +534,7 @@ export default function Home() {
           >
             <div
               className="bg-[#0e0c24] text-white p-8 rounded-2xl max-w-xl relative shadow-2xl border border-blue-500 text-left 
-  transform scale-95 animate-fade-in-up"
+        transform scale-95 animate-fade-in-up"
               style={{
                 maxHeight:
                   selectedProject.name === "Second-hand IT Equipment Website" ||
@@ -545,6 +550,7 @@ export default function Home() {
               onClick={(e) => e.stopPropagation()}
               tabIndex={-1}
             >
+              {/* ปุ่มปิด */}
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close project details"
@@ -552,28 +558,49 @@ export default function Home() {
               >
                 ✕
               </button>
+
+              {/* เนื้อหา Modal */}
               <div className="flex flex-col items-center gap-6">
+                {/* รูปโปรเจกต์ */}
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.name}
-                  width={500}
+                  width={450}
                   height={300}
                   className="rounded-lg border border-white object-contain"
                 />
-                <div className="flex gap-2 text-sm flex-wrap justify-center">
-                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
-                    {selectedProject.tag}
-                  </span>
-                  <span className="border border-white px-3 py-1 rounded-full">
-                    {selectedProject.date}
-                  </span>
+
+                {/* tag + date + figma */}
+                <div className="flex justify-between items-center w-full flex-wrap gap-2">
+                  <div className="flex gap-2 text-sm flex-wrap">
+                    <span className="bg-blue-500 text-white px-3 py-1 rounded-full">
+                      {selectedProject.tag}
+                    </span>
+                    <span className="border border-white px-3 py-1 rounded-full">
+                      {selectedProject.date}
+                    </span>
+                  </div>
+
+                  {selectedProject.figmaUrl && (
+                    <a
+                      href={selectedProject.figmaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-blue-900 hover:bg-blue-700 text-white px-4 py-1.5 rounded-full font-medium text-sm transition hover:scale-105"
+                    >
+                      <SiFigma className="text-lg" /> ดูใน Figma
+                    </a>
+                  )}
                 </div>
+
+                {/* ชื่อและคำอธิบาย */}
                 <h3
                   id="project-title"
                   className="text-2xl font-bold text-center"
                 >
                   {selectedProject.name}
                 </h3>
+
                 <p id="project-desc" className="text-gray-300 text-center">
                   {selectedProject.description}
                 </p>
