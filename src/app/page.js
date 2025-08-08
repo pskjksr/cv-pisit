@@ -404,8 +404,8 @@ export default function Home() {
             seeking internship opportunities in{" "}
             <strong className="text-blue-400">Front-End Development</strong>,{" "}
             <strong className="text-blue-400">UX/UI Design</strong>, or{" "}
-            <strong className="text-blue-400">Business Analysis</strong> between{" "}
-            <strong className="text-blue-400">Nov 2025 - Mar 2026</strong>.
+            <strong className="text-blue-400">Business Analysis</strong> from{" "}
+            <strong className="text-blue-400">3 November 2025 to 20 February 2026</strong>.
           </p>
           <a
             href="/Resume.pdf"
