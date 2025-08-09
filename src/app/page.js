@@ -383,12 +383,12 @@ export default function Home() {
         id="about"
         className="bg-white text-blue-900 py-24 px-6 flex flex-col md:flex-row items-center justify-center gap-12 animate-fade-in-up"
       >
-        <div className="w-64 h-64 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
+        <div className="w-80 h-80 rounded-full overflow-hidden border-4 bg-[#0e0c24] shadow-xl hover:scale-105 transition duration-300 hover:shadow-blue-500/50 animate-zoom-in">
           <Image
             src="/P.jpg"
             alt="Pisit portrait"
-            width={256}
-            height={256}
+            width={320}
+            height={320}
             className="object-cover w-full h-full"
           />
         </div>
@@ -401,14 +401,19 @@ export default function Home() {
             I&apos;m{" "}
             <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
             3rd-year Software Engineering student at the University of Phayao,
-            seeking internship opportunities in{" "}
-            <strong className="text-blue-400">Front-End Development</strong>,{" "}
-            <strong className="text-blue-400">UX/UI Design</strong>, or{" "}
-            <strong className="text-blue-400">Business Analysis</strong> from{" "}
-            <strong className="text-blue-400">3 November 2025 to 20 February 2026</strong>.
+            passionate about creating{" "}
+            <strong className="text-blue-400">intuitive</strong> and{" "}
+            <strong className="text-blue-400">engaging user experiences</strong>
+            , and seeking an internship in{" "}
+            <strong className="text-blue-400">UX/UI Design</strong> from{" "}
+            <strong className="text-blue-400">
+              3 November 2025 to 20 February 2026
+            </strong>
+            .
           </p>
+
           <a
-            href="/Resume.pdf"
+            href="/Resume-Pisit.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="relative inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md 
