@@ -351,7 +351,7 @@ export default function Home() {
             },
             {
               icon: <SiGmail className="h-6 w-6 text-white" />,
-              link: "https://mail.google.com/mail/u/2/#inbox",
+              link: "https://mail.google.com/mail/u/4/#inbox",
               color: "from-red-600 to-red-800 border-red-500/50",
             },
             {
