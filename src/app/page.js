@@ -398,16 +398,24 @@ export default function Home() {
             📘 About Me
           </h2>
           <p className="text-lg leading-relaxed mb-6">
-            I&apos;m{" "}
-            <strong className="text-blue-400">Pisit Khunchomklaosiri</strong>, a
-            3rd-year Software Engineering student at the University of Phayao,
-            passionate about creating{" "}
-            <strong className="text-blue-400">intuitive</strong> and{" "}
-            <strong className="text-blue-400">engaging user experiences</strong>
-            , and seeking an internship in{" "}
-            <strong className="text-blue-400">UX/UI Design</strong> from{" "}
+            Pisit Khunchomklaosiri is a third-year Software Engineering student
+            at the University of Phayao with a strong interest in{" "}
+            <strong className="text-blue-400">UX/UI Design</strong>,{" "}
+            <strong className="text-blue-400">Front-End Development</strong>,
+            and{" "}
             <strong className="text-blue-400">
-              3 November 2025 to 20 February 2026
+              Software Project Coordination
+            </strong>
+            , including roles as a Business Analyst (BA) and Project
+            Coordinator. I am eager to apply my skills to create{" "}
+            <strong className="text-blue-400">user-centered</strong>,{" "}
+            <strong className="text-blue-400">modern</strong>, and{" "}
+            <strong className="text-blue-400">responsive interfaces</strong>,
+            while also contributing in areas such as software testing, business
+            analysis, requirement definition, and project coordination during my
+            internship{" "}
+            <strong className="text-blue-400">
+              (November 2025 – March 2026)
             </strong>
             .
           </p>
